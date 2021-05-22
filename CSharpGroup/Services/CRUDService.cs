@@ -1,9 +1,9 @@
-﻿using CSharpGroup.Models;
+﻿
+using CSharpGroup.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CSharpGroup.Services
 {
@@ -11,16 +11,37 @@ namespace CSharpGroup.Services
     {
         private readonly IMongoCollection<T> _items;
 
-        public CRUDService(string CollectionName, MongoClientService mongoClientService)
+        public CRUDService(ICSharpGroupDatabaseSettings settings, MongoClientService mongoClientService)
         {
-            _items = mongoClientService.db.GetCollection<T>(CollectionName);
+            Type listType = typeof(T);
+            if (listType == typeof(User))
+            {
+                _items = mongoClientService.db.GetCollection<T>(settings.UsersCollectionName);
+            }
+            else if(listType == typeof(Provider))
+            {
+                _items = mongoClientService.db.GetCollection<T>(settings.ProvidersCollectionName);
+            }
+            else if(listType == typeof(Category))
+            {
+                _items = mongoClientService.db.GetCollection<T>(settings.CategoriesCollectionName);
+            }
+            else if(listType == typeof(Order))
+            {
+                _items = mongoClientService.db.GetCollection<T>(settings.OrdersCollectionName);
+            }
+            else if(listType == typeof(Review))
+            {
+                _items = mongoClientService.db.GetCollection<T>(settings.ReviewsCollectionName);
+            }
+            
         }
 
         public List<T> Get() =>
             _items.Find(item => true).ToList();
 
         public T Get(string id) =>
-            _items.Find<T>(item => item.Id == id).FirstOrDefault();
+            _items.Find(item => item.Id == id).FirstOrDefault();
 
         public T Create(T item)
         {
