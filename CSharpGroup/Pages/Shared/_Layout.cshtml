@@ -4,10 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CSharpGroup</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/blue.css">
-    <link rel="stylesheet" href="~/css/style.css">
+
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    @RenderSection("styles", false)
+
 </head>
 <body>
     <header>
@@ -19,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link links" asp-area="" asp-page="/About" style="color: #735798">About</a>
+                        <a class="nav-link links" asp-area="" asp-page="/Single_Provider" style="color: #735798">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Services" style="color: #735798">Services</a>
