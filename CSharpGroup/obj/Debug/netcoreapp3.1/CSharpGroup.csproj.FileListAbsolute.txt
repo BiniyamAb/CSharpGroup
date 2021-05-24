@@ -98,3 +98,4 @@ C:\Users\Rediet\Source\Repos\CSharpGroup4\CSharpGroup\obj\Debug\netcoreapp3.1\CS
 C:\Users\Rediet\Source\Repos\CSharpGroup4\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.dll
 C:\Users\Rediet\Source\Repos\CSharpGroup4\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.pdb
 C:\Users\Rediet\Source\Repos\CSharpGroup4\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.genruntimeconfig.cache
+C:\Users\Rediet\Source\Repos\CSharpGroup4\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Provider_list.cshtml.g.cs
