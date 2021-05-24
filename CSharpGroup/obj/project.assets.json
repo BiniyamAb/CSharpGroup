@@ -449,25 +449,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BINA\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Rediet\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BINA\\source\\repos\\CSharpGroup\\CSharpGroup\\CSharpGroup.csproj",
+      "projectUniqueName": "C:\\Users\\Rediet\\Source\\Repos\\CSharpGroup4\\CSharpGroup\\CSharpGroup.csproj",
       "projectName": "CSharpGroup",
-      "projectPath": "C:\\Users\\BINA\\source\\repos\\CSharpGroup\\CSharpGroup\\CSharpGroup.csproj",
-      "packagesPath": "C:\\Users\\BINA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BINA\\source\\repos\\CSharpGroup\\CSharpGroup\\obj\\",
+      "projectPath": "C:\\Users\\Rediet\\Source\\Repos\\CSharpGroup4\\CSharpGroup\\CSharpGroup.csproj",
+      "packagesPath": "C:\\Users\\Rediet\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Rediet\\Source\\Repos\\CSharpGroup4\\CSharpGroup\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\BINA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Rediet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
