@@ -34,11 +34,11 @@ namespace CSharpGroup.Services
             {
                 _items = mongoClientService.db.GetCollection<T>(settings.ReviewsCollectionName);
             }
+            Console.WriteLine(listType);
             
         }
 
-        public List<T> Get() =>
-            _items.Find(item => true).ToList();
+        public List<T> Get() => _items.Find(item => true).ToList();
 
         public T Get(string id) =>
             _items.Find(item => item.Id == id).FirstOrDefault();

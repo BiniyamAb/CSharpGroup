@@ -1,0 +1,68 @@
+﻿@page
+@model CSharpGroup.Pages.servicesModel
+@{
+    ViewData["Title"] = "services";
+}
+
+<!--<div class="container-fluid" id="con">
+    <div class="row" id="row">
+        <div class="col-md-12 col text-center">-->
+
+            <!--Search bar-->
+            <!--<div class="container h-100">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="search" id="row">
+                        <div class="col-md-10">
+                            <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div id="categoryDropDown"></div>
+                </div>
+            </div>-->
+            <!--search bar end-->
+
+        <!--</div>
+    </div>
+</div>-->
+
+
+<div class="container-fluid" id="con">
+    <div class="row" id="row-row">
+        <div class="col-md-12 col text-center">
+
+            <!--Search bar-->
+            <div class="container h-100">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="row" id="row-search">
+                        <div class="col-md-10">
+                            <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div id="categoryDropDown"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    @*@foreach (var item in Model.categoryList)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@item.Image" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">@item.Name</p>
+            </div>
+        </div>
+    }*@
+</div>
+
+
+
+

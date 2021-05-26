@@ -32,7 +32,7 @@ namespace CSharpGroup
             services.AddSingleton<ICSharpGroupDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<CSharpGroupDatabaseSettings>>().Value);
             services.AddSingleton<MongoClientService>();
-            services.AddTransient<CRUDService<User>>();
+            services.AddSingleton<CRUDService<User>>();
             services.AddSingleton<CRUDService<Provider>>();
             services.AddSingleton<CRUDService<Category>>();
             services.AddSingleton<CRUDService<Order>>();
@@ -56,6 +56,7 @@ namespace CSharpGroup
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

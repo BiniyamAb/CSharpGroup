@@ -48,3 +48,4 @@ C:\Users\BINA\source\repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CShar
 C:\Users\BINA\source\repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.dll
 C:\Users\BINA\source\repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.pdb
 C:\Users\BINA\source\repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.genruntimeconfig.cache
+C:\Users\BINA\source\repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\services.cshtml.g.cs
