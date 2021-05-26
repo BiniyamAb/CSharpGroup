@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CSharpGroup.Pages
 {
-    public class servicesModel : PageModel
+    public class ServicesModel : PageModel
     {
         //public List<Category> categoryList;
         //private readonly CRUDService<Category> _myService;

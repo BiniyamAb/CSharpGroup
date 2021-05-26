@@ -4,31 +4,43 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - CSharpGroup</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" type="text/css" asp-append-version="true"/>
+
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    @RenderSection("styles", false)
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CSharpGroup</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+            <a class="navbar-brand logo" asp-area="" asp-page="/Index">Service Provider</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link links" asp-area="" asp-page="/Single_Provider" style="color: #735798">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" asp-area="" asp-page="/ervices" style="color: #735798">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" asp-area="" asp-page="/Contact" style="color: #735798">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" asp-area="" asp-page="/Register" style="color: #735798">Signup/Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-secondary providerbtn" asp-area="" asp-page="/BecomeaProvider">Become a Provider</a>
+                    </li>
+                </ul>
+
             </div>
+
         </nav>
+
+
     </header>
     @RenderBody()
     <div class="container">
@@ -37,9 +49,57 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - CSharpGroup - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer class="border-top ">
+        <div class="row justify-content-around mb-0 pt-5 mx-4">
+            <div class="col-xl-2 col-md-6 order-xl-1 order-4 mr-xl-0 my-auto">
+                <ul class="list-unstyled mt-md-3 mt-5">
+                    <li><a href="index.html" id="footerLink">Services Provider</a></li>
+                    <li class="social">
+                        <span class="mx-2 h-25"> <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer"> <i class="fab fa-facebook"></i></a></span>
+                        <span class="mx-2 h-25"> <a href="http://www.instagram.com" target="_blank" rel="noopener noreferrer"> <i class="fab fa-instagram"></i></a></span>
+                        <span class="mx-2 h-25"> <a href="http://www.twitter.com" target="_blank" rel="noopener noreferrer"> <i class="fab fa-twitter"></i></a></span>
+
+
+                    </li>
+                </ul>
+                <ul class="list-unstyled my-xl-4 my-md-3">
+                    <li><a asp-page="/Index"></a></li>
+
+                </ul>
+            </div>
+            <div class="col-xl-2 col-md-3 pt-4 order-1">
+                <ul class="list-unstyled">
+                    <li class="mt-md-0 mt-4">INFO</li>
+                    <li><a asp-page="/About" id="footerLink">About US</a></li>
+                    <li><a asp-page="/Blog" id="footerLink">Blog</a></li>
+                    <li><a asp-page="/TermsAndPrivacy" id="footerLink">Terms and Privacy</a></li>
+                    <li><a asp-page="/FAQ" id="footerLink">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-xl-2 col-md-3 pt-4 order-2">
+                <ul class="list-unstyled">
+                    <li class="mt-md-0 mt-4">Your needs</li>
+                    <li><a asp-page="/BecomeaProvider" id="footerLink">Become a Tasker</a> </li>
+                    <li><a asp-page="/Services" id="footerLink">All services</a></li>
+                    <li><a asp-page="/Delivery" id="footerLink">Delivery services</a> </li>
+                    <li><a asp-page="/Errand" id="footerLink">Errand Running</a></li>
+                </ul>
+            </div>
+            <div class="col-xl-auto col-md-3 pt-4 my-sm-0 order-md-3 order-sm-1 ">
+                <ul class="list-unstyled">
+                    <li class="mt-md-0 mt-4">We Offer</li>
+                    <li>Intergrated Security </li>
+                    <li>Core Features</li>
+                    <li>Product Features</li>
+                    <li>Pricing</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="row justify-content-center px-3 py-3 pt-5">
+            <div class="col text-center">
+                <p>Copyright &copy; Service Provider 2021 All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
