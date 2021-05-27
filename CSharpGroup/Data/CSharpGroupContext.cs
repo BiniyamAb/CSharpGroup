@@ -20,7 +20,7 @@ namespace CSharpGroup.Data
         public DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer(@"server=(localdb)\mssqllocaldb;Initial Catalog=myDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+            => options.UseSqlServer(@"server=(localdb)\mssqllocaldb;Database=myDb;User Id=Csharp;Password=Csharp;Trusted_Connection=True;MultipleActiveResultSets=true");
 
     }
 }
