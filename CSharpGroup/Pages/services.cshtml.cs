@@ -2,27 +2,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CSharpGroup.Services;
+using CSharpGroup.Data;
 using CSharpGroup.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace CSharpGroup.Pages
 {
     public class ServicesModel : PageModel
     {
-        public List<Category> categoryList;
-        public Category item;
-        private readonly CategoryService _myService;
+        public IList<Category> categoryList;
+        private readonly CSharpGroupContext _mycontext;
+        //public Category item;
+        //private readonly CategoryService _myService;
 
-        public ServicesModel(CategoryService myService)
+        public ServicesModel(CSharpGroupContext context)
         {
-            _myService = myService;
+            _mycontext = context;
         }
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            categoryList = await _mycontext.Categories.ToListAsync();
             //List<Category> categoryList = _myService.Get();
-            Category item = _myService.Get("60a8d386d2696aebf303dfd5");
+            //Category item = _myService.Get("60a8d386d2696aebf303dfd5");
+
+
+            //var category = new Category { Name = "Delivery", Image = "./img/delivery.jpg", NumProviders = 5, Description = "Delivey Category" };
+            //await _mycontext.AddAsync(category);
+            //await _mycontext.SaveChangesAsync();
         }
     }
 }

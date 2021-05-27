@@ -1,8 +1,9 @@
+using CSharpGroup.Data;
 using CSharpGroup.Models;
-using CSharpGroup.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,19 +27,9 @@ namespace CSharpGroup
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CSharpGroupDatabaseSettings>(
-                Configuration.GetSection(nameof(CSharpGroupDatabaseSettings)));
 
-            services.AddSingleton<ICSharpGroupDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<CSharpGroupDatabaseSettings>>().Value);
-            services.AddSingleton<MongoClientService>();
-            services.AddSingleton<CRUDService<User>>();
-            services.AddSingleton<CRUDService<Provider>>();
-            services.AddSingleton<CRUDService<Category>>();
-            services.AddSingleton<CategoryService>();
-            services.AddSingleton<CRUDService<Order>>();
-            services.AddSingleton<CRUDService<Review>>();
-
+            services.AddDbContext<CSharpGroupContext>(options =>
+                options.UseSqlServer("server=(localdb)\\mssqllocaldb;Database=myDb;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddRazorPages();
         }
 
