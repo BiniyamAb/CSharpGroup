@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CSharpGroup.Models
 {
-    public class User : ModelInterface
-    {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+    public class User 
+    { 
+        [key]
+        public int Id { get; set; }
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNo { get; set; }

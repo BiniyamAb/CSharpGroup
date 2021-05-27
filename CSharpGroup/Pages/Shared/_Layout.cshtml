@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - CSharpGroup</title>
 
     <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" asp-append-version="true" />
     @RenderSection("styles", false)
 
 </head>
@@ -23,7 +23,7 @@
                         <a class="nav-link links" asp-area="" asp-page="/Single_Provider" style="color: #735798">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link links" asp-area="" asp-page="/ervices" style="color: #735798">Services</a>
+                        <a class="nav-link links" asp-area="" asp-page="/Services" style="color: #735798">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Contact" style="color: #735798">Contact</a>

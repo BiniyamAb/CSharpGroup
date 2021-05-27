@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace CSharpGroup.Models
 {
-    public class Provider : ModelInterface
+    public class Provider
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        [key]
+        public int Id { get; set; }
         public string Description { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
         public string Category { get; set; }
         public int JobsDone { get; set; }
         public decimal PerHourWage { get; set; }
         public string Recommendation { get; set; }
         public double AverageRating { get; set; }
+        public int UserId { get; set; }
+
+        public User User { get; set; }
 
     }
 }

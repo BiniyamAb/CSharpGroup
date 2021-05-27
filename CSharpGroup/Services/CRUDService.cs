@@ -34,7 +34,7 @@ namespace CSharpGroup.Services
             {
                 _items = mongoClientService.db.GetCollection<T>(settings.ReviewsCollectionName);
             }
-            Console.WriteLine(listType);
+            
             
         }
 

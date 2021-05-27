@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace CSharpGroup.Models
 {
-    public class Review : ModelInterface
+    public class Review
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string OrderId { get; set; }
+
+        public int Id { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
+        public int OrderId { get; set; }
+
+        public Order Order { get; set; }
 
     }
 }

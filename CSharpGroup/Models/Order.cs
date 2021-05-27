@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace CSharpGroup.Models
 {
-    public class Order : ModelInterface
+    public class Order
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string ProviderId { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string SeekerId { get; set; }
+        public int Id { get; set; }
         public string Status { get; set; }
         public bool IsCompleted { get; set; }
+        public string OrderCreatedDate { get; set; }
+        public string OrderCompletedDate { get; set; }
         public DateTime StartTime { get; set; }
+        public double SavedTime { get; set; }
         public DateTime EndTime { get; set; }
+        public int ProviderId { get; set; }
+        public int SeekerId { get; set; }
+
+        public Provider Provider { get; set; }
+        public User Seeker { get; set; }
     }
 }

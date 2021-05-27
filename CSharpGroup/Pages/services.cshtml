@@ -53,14 +53,14 @@
 
 <div class="container-fluid">
     @*@foreach (var item in Model.categoryList)
-    {
+    {*@
         <div class="card" style="width: 18rem;">
-            <img src="@item.Image" class="card-img-top" alt="...">
+            <img src="@Model.item.Image" class="card-img-top" alt="...">
             <div class="card-body">
-                <p class="card-text">@item.Name</p>
+                <p class="card-text">@Model.item.Name</p>
             </div>
         </div>
-    }*@
+    @*  *@}
 </div>
 
 

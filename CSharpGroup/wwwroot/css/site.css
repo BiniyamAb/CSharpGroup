@@ -70,14 +70,12 @@ body {
   /*margin-bottom: 60px;*/
 }
 footer {
-    margin-top: 12%;
+    /*margin-top: 12%;*/
     padding: 3%;
     background: #301934;
     color: #fff;
     
 }
-
-<<<<<<< HEAD
 
 
 #con {
@@ -133,15 +131,13 @@ footer {
     caret-color: red;
     transition: width 0.4s linear;
 }
-=======
-    footer a{
-        text-decoration:none;
-        color:white;
+footer a{
+    text-decoration:none;
+    color:white;
     
-    }
+}
 
-    footer a:hover{
-        color:silver;
-        text-decoration:none;
-    }
->>>>>>> 5212ce453d6f9e62dd75c6ddad29bd675ace4367
+footer a:hover{
+    color:silver;
+    text-decoration:none;
+}

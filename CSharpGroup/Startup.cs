@@ -35,6 +35,7 @@ namespace CSharpGroup
             services.AddSingleton<CRUDService<User>>();
             services.AddSingleton<CRUDService<Provider>>();
             services.AddSingleton<CRUDService<Category>>();
+            services.AddSingleton<CategoryService>();
             services.AddSingleton<CRUDService<Order>>();
             services.AddSingleton<CRUDService<Review>>();
 

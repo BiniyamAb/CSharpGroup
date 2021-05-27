@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace CSharpGroup.Models
 {
-    public class Category : ModelInterface
+    public class Category
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public int NumProviders { get; set; }
