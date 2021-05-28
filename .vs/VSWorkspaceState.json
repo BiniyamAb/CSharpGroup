@@ -7,10 +7,8 @@
     "\\CSharpGroup\\bin\\Debug\\netcoreapp3.1",
     "\\CSharpGroup\\bin\\Release",
     "\\CSharpGroup\\bin\\Release\\netcoreapp3.1",
-    "\\CSharpGroup\\Data",
-    "\\CSharpGroup\\Migrations",
     "\\CSharpGroup\\wwwroot"
   ],
-  "SelectedNode": "\\CSharpGroup\\Data",
+  "SelectedNode": "\\CSharpGroup.sln",
   "PreviewInSolutionExplorer": false
 }
