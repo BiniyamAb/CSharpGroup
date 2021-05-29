@@ -141,3 +141,8 @@ footer a:hover{
     color:silver;
     text-decoration:none;
 }
+
+.services-a-tag{
+    text-decoration: none;
+    color: black;
+}
