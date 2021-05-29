@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model CSharpGroup.Pages.Provider_listModel
 @{
     ViewData["Title"] = "Provider list";
@@ -151,241 +151,40 @@
             </div>
 
             <div class="listings-container grid-layout margin-top-35">
+                @foreach (var item in Model.providersList)
+                {
+                <h3>@item.FirstName</h3>
+                    <!--<a href="single-job-page.html" class="job-listing">-->
 
+                        <!-- Job Listing Details -->
+                        <!--<div class="job-listing-details">-->
+                            <!-- Logo -->
+                            <!--<div class="job-listing-company-logo">
+                                <img src="images/company-logo-01.png" alt="">
+                            </div>-->
+
+                            <!-- Details -->
+                            <!--<div class="job-listing-description">
+                                <h4 class="job-listing-company">Hexagon <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+                                <h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
+                            </div>
+                        </div>-->
+
+                        <!-- Job Listing Footer -->
+                        <!--<div class="job-listing-footer">
+                            <span class="bookmark-icon"></span>
+                            <ul>
+                                <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
+                                <li><i class="icon-material-outline-business-center"></i> Full Time</li>
+                                <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
+                                <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
+                            </ul>
+                        </div>
+                    </a>-->
+
+                }
                 <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-01.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Hexagon <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-                            <h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-05.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Laxo</h4>
-                            <h3 class="job-listing-title">Competition Law Officer</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-02.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Coffee</h4>
-                            <h3 class="job-listing-title">Barista and Cashier</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-03.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-                            <h3 class="job-listing-title">Restaurant General Manager</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-05.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Skyist</h4>
-                            <h3 class="job-listing-title">International Marketing Coordinator</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-05.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Podous</h4>
-                            <h3 class="job-listing-title">Construction Labourers</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-04.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Mates</h4>
-                            <h3 class="job-listing-title">Administrative Assistant</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
-                <!-- Job Listing -->
-                <a href="single-job-page.html" class="job-listing">
-
-                    <!-- Job Listing Details -->
-                    <div class="job-listing-details">
-                        <!-- Logo -->
-                        <div class="job-listing-company-logo">
-                            <img src="images/company-logo-06.png" alt="">
-                        </div>
-
-                        <!-- Details -->
-                        <div class="job-listing-description">
-                            <h4 class="job-listing-company">Trideo</h4>
-                            <h3 class="job-listing-title">Human Resources Consultant</h3>
-                        </div>
-                    </div>
-
-                    <!-- Job Listing Footer -->
-                    <div class="job-listing-footer">
-                        <span class="bookmark-icon"></span>
-                        <ul>
-                            <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                            <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                            <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-                        </ul>
-                    </div>
-                </a>
-
+                @* Job Listing end *@
             </div>
 
             <!-- Pagination -->

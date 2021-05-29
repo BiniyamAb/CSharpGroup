@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CSharpGroup</title>
-
-    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")" asp-append-version="true"/>
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" asp-append-version="true"/>
     <link rel="stylesheet" href="@Url.Content("~/css/site.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")" asp-append-version="true" />
     @RenderSection("styles", false)
@@ -28,6 +28,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Contact" style="color: #735798">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" asp-area="" asp-page="/Provider_list" style="color: #735798">provider</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Forms/Register" style="color: #735798">Signup/Login</a>
