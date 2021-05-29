@@ -23,7 +23,7 @@ namespace CSharpGroup.Pages
         }
         public async Task OnGetAsync()
         {
-            //categoryList = await _mycontext.Categories.ToListAsync();
+            categoryList = await _mycontext.Categories.ToListAsync();
             ////List<Category> categoryList = _myService.Get();
             ////Category item = _myService.Get("60a8d386d2696aebf303dfd5");
 

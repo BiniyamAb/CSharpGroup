@@ -1,0 +1,50 @@
+﻿@page
+@model CSharpGroup.Pages.Forms.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<h2>Login or SignUp</h2>
+<div>
+    <form method="post">
+        @Html.ValidationMessage("Email")
+        <div class="form-group">
+            <label asp-for="user.Email"></label>
+            <input asp-for="user.Email" class="form-control">
+            <span asp-validation-for="user.Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.FirstName"></label>
+            <input asp-for="user.FirstName" class="form-control">
+            <span asp-validation-for="user.FirstName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.LastName"></label>
+            <input asp-for="user.LastName" class="form-control">
+            <span asp-validation-for="user.LastName"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="user.Password"></label>
+            <input asp-for="user.Password" class="form-control">
+            <span asp-validation-for="user.Password"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.ConfirmPassword"></label>
+            <input asp-for="user.ConfirmPassword" class="form-control">
+            <span asp-validation-for="user.ConfirmPassword"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.PhoneNo"></label>
+            <input asp-for="user.PhoneNo" class="form-control">
+            <span asp-validation-for="user.PhoneNo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.Address"></label>
+            <input asp-for="user.Address" class="form-control">
+            <span asp-validation-for="user.Address"></span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <a asp-page="Login">Login</a>
+</div>
