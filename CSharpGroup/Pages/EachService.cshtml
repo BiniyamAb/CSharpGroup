@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model CSharpGroup.Pages.EachServiceModel
 @{
     ViewData["Title"] = "Service";
@@ -12,10 +12,10 @@
     <div class="row row">
         <div class="col-md-12 col text-center">
             <div class="middle  mx-auto">
-                <h2>Find help now</h2>
+                <h2 class="px-2">Find help now for your @Model.Service.Name - needed tasks</h2>
                 <p>Choose the right person for you and get your task done efficently!</p>
                 <div class="container chooseBtn">
-                    <a href="chooseAProvider.html?id=1621502754783" class="btn btn-outline-secondary help">Find help now</a>
+                    <a asp-page="/Provider_List" asp-route-id="@Model.Service.Id" class="btn btn-outline-secondary help">Find help now</a>
                 </div>
             </div>
         </div>
@@ -82,18 +82,18 @@
     </div>
 </div>
 
-<div class="container-fluid cont5">
-    <div class="row row5">
-        <div class="col-md-7">
-            <img src="https://ideas.ted.com/wp-content/uploads/sites/3/2019/12/featured_ask_help_istock-1.jpg" alt="" class="imgholder">
+<div class="container cont5">
+    <div class="row row5 d-flex">
+        <div class="col-md-6 align-self-end pr-5">
+            <img style="width:40rem; height:30rem;" src="https://ideas.ted.com/wp-content/uploads/sites/3/2019/12/featured_ask_help_istock-1.jpg" alt="" class="pr-5 imgholder">
 
         </div>
 
 
-        <div class="col-md-5 col5">
-            <h2>Ready to hire a Provider?</h2>
-            <div class="container chooseBtn1">
-                <a href="chooseAProvider.html?id=1621502754783" class="btn btn-outline-secondary help">Find help now</a>
+        <div class="col-md-6 col5 align-self-start pl-5">
+            <h2 class="pl-4">Ready to hire a Provider?</h2>
+            <div class="container chooseBtn1 pl-4">
+                <a asp-page="/Provider_List" asp-route-id="@Model.Service.Id" class="btn btn-outline-secondary help">Find help now</a>
             </div>
         </div>
 
