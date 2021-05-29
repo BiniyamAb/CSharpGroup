@@ -42,6 +42,7 @@ namespace CSharpGroup.Pages
                             PerHourWage = provider.PerHourWage,
                             Email = user.Email,
                             PhoneNo = user.PhoneNo,
+                            ProviderId = provider.Id,
                             Image = user.Image,
                             Description = provider.Description,
                             Recommendation = provider.Recommendation

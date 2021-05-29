@@ -153,34 +153,34 @@
             <div class="listings-container grid-layout margin-top-35">
                 @foreach (var item in Model.providersList)
                 {
-                <h3>@item.FirstName</h3>
-                    <!--<a href="single-job-page.html" class="job-listing">-->
+                    var imageLink = "." + item.Image;
+                
+                    <a asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
 
-                        <!-- Job Listing Details -->
-                        <!--<div class="job-listing-details">-->
-                            <!-- Logo -->
-                            <!--<div class="job-listing-company-logo">
-                                <img src="images/company-logo-01.png" alt="">
-                            </div>-->
-
-                            <!-- Details -->
-                            <!--<div class="job-listing-description">
-                                <h4 class="job-listing-company">Hexagon <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-                                <h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
+                         Job Listing Details 
+                        <div class="job-listing-details">
+                            
+                            <div class="job-listing-company-logo">
+                                <img src="@imageLink" alt="">
                             </div>
-                        </div>-->
 
-                        <!-- Job Listing Footer -->
-                        <!--<div class="job-listing-footer">
+                            
+                            <div class="job-listing-description">
+                                <h4 class="job-listing-company">@item.FirstName @item.LastName  <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+                            </div>
+                        </div>
+
+                       
+                        <div class="job-listing-footer">
                             <span class="bookmark-icon"></span>
                             <ul>
-                                <li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-                                <li><i class="icon-material-outline-business-center"></i> Full Time</li>
-                                <li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-                                <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
+                                <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
+                                <li><i class="fa fas-star"></i> @item.AverageRating </li>
+                                <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
+                                <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done</li>
                             </ul>
                         </div>
-                    </a>-->
+                    </a>
 
                 }
                 <!-- Job Listing -->
