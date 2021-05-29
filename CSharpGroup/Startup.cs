@@ -30,7 +30,7 @@ namespace CSharpGroup
         {
             
             services.AddDbContext<CSharpGroupContext>(options =>
-                options.UseSqlServer("server=(localdb)\\mssqllocaldb;Database=myDb;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                options.UseSqlServer("server=(localdb)\\mssqllocaldb;Database=myDb;User Id=Csharp;Password=Csharp;Trusted_Connection=True;MultipleActiveResultSets=true "));
             services.AddRazorPages();
             services.AddSession();
         }
