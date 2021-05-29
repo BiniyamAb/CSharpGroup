@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace CSharpGroup
 {
     public class Startup
@@ -27,10 +28,11 @@ namespace CSharpGroup
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSession();
+            
             services.AddDbContext<CSharpGroupContext>(options =>
                 options.UseSqlServer("server=(localdb)\\mssqllocaldb;Database=myDb;User Id=Csharp;Password=Csharp;Trusted_Connection=True;MultipleActiveResultSets=true "));
             services.AddRazorPages();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
