@@ -2,16 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\CSharpGroup",
-<<<<<<< HEAD
     "\\CSharpGroup\\bin",
     "\\CSharpGroup\\bin\\Debug",
     "\\CSharpGroup\\bin\\Release",
     "\\CSharpGroup\\bin\\Release\\netcoreapp3.1",
     "\\CSharpGroup\\Pages",
     "\\CSharpGroup\\wwwroot"
-=======
-    "\\CSharpGroup\\Models"
->>>>>>> 2358935bf047af52925cd67174b0e2f17f266201
   ],
   "SelectedNode": "\\CSharpGroup.sln",
   "PreviewInSolutionExplorer": false
