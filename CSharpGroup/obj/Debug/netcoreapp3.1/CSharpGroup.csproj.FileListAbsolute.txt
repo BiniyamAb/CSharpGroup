@@ -150,3 +150,4 @@ C:\Users\user\Desktop\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGrou
 C:\Users\user\Desktop\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.Views.pdb
 C:\Users\user\Desktop\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.csproj.CopyComplete
 C:\Users\user\Desktop\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.genruntimeconfig.cache
+C:\Users\user\Desktop\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\BecomeaProvider.cshtml.g.cs
