@@ -1,0 +1,18 @@
+﻿.row1 {
+    margin-left: 180px;
+}
+
+.nav-sidebar{
+    margin-top:100px;
+   
+}
+
+    .nav-sidebar > li {
+        padding-top: 25px;
+    }
+
+@media screen and (min-width:400px) and (max-width:800px) {
+    .row1 {
+        margin-left: 10px;
+    }
+}

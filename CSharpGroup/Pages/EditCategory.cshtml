@@ -1,0 +1,62 @@
+﻿@page
+@model CSharpGroup.Pages.EditCategoryModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <h2>Add New Category</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Category.Id" />
+                        <label asp-for="Category.Name">Name</label>
+                        <input asp-for="Category.Name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter category name" style="width:400px;">
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Category.Description">Description</label>
+                        <input asp-for="Category.Description" type="text" class="form-control" placeholder="Say something about it..." style="width:400px; height:100px;">
+                    </div>
+
+                    <div class="col-auto">
+                        <label asp-for="Category.Image">Add image</label>
+                        <div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
+                            <img class="profile-pic" src="images/user-avatar-placeholder.png" alt="" />
+                            <div class="upload-button"></div>
+                            <input asp-for="Category.Image" class="file-upload" type="file" accept="image/*" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:30px;" >Edit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
