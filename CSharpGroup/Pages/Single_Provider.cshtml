@@ -1,4 +1,4 @@
-﻿@page "{id}"
+﻿@page "{id:int}"
 @model CSharpGroup.Pages.Single_ProviderModel
 @{
     ViewData["Title"] = "Single Profile Page";
@@ -149,16 +149,32 @@
                     if (Model.loggedUserEmail == null)
                     {
                         <a asp-page="/Index" asp-route-providerId="@Model.providerUser.Id" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary">
-                        Sign up to hire</a>              
+                            Sign up to hire
+                        </a>
                     }
                     else
                     {
-                        <button type="button" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            HIRE
-                        </button>
+                        if (Model._order == null)
+                        {
+                            <button type="button" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                HIRE
+                            </button>
+                        }
+                        else
+                        {
+                            if (Model._order.Status == "accepted")
+                            {
+                                <h4 class="text-success text-center">Task undertaking...</h4>
+                            }
+                            if (Model._order.Status == "pending")
+                            {
+                                <h4 class="text-primary text-center">Your request is being processed...</h4>
+                            }
+                        }
+
                     }
                 }
-                
+
                 @*<a href="#small-dialog" class="">Make an Offer <i class="icon-material-outline-arrow-right-alt"></i></a>*@
 
 
@@ -184,11 +200,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                Are You sure you want to hire @Model.providerUser.FirstName @Model.providerUser.LastName?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form asp-page-handler="hire" method="post">
+                <form asp-route-providerId="@Model.providerUser.Id" asp-route-loggedUserId="@Model.loggedUser.Id" asp-page-handler="hire" method="post">
                     <button class="btn btn-primary">Confirm</button>
                 </form>
             </div>
