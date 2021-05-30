@@ -17,7 +17,7 @@ namespace CSharpGroup.Models
         public string OrderCompletedDate { get; set; }
         public DateTime StartTime { get; set; }
         public double SavedTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public int UniqueCode { get; set; }
         
         public int ProviderId { get; set; }
         public Provider Provider { get; set; }

@@ -35,15 +35,17 @@
                     @*else display profile icon*@
 
                     @{ if (HttpContextAccessor.HttpContext.Session.GetString("email") == null)
-                                    {
-                        <li class="nav-item">
-                            <a class="nav-link links" asp-area="" asp-page="/AuthOption" asp-route-providerId="0" style="color: #735798">Signup/Login</a>
-                        </li>
-                                        <li class="nav-item">
-                                            <a class="btn btn-outline-secondary providerbtn" asp-area="" asp-page="/BecomeaProvider">Become a Provider</a>
-                                        </li> }
-                                                    else
-                                                    {
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link links" asp-area="" asp-page="/AuthOption" asp-route-providerId="0" style="color: #735798">Signup/Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-secondary providerbtn" asp-area="" asp-page="/BecomeaProvider">Become a Provider</a>
+                            </li>
+
+                        }
+                        else
+                        {
 
                                         <li class="nav-item mr-4">
                                             <div class="dropdown mr-4">
@@ -70,7 +72,9 @@
 
 
     </header>
+   
     @RenderBody()
+
     <div class="container">
         <main role="main" class="pb-3">
 
