@@ -10,7 +10,7 @@
 
 
 <div>
-    <form method="post">
+    <form method="post" >
         @Html.ValidationMessage("Email")
         <div class="form-group">
             <label asp-for="user.Email"></label>
@@ -46,20 +46,23 @@
 
         <div class="form-group">
             <label asp-for="user.Address"></label>
-            <select name="city" id="city">
+            <select asp-for="user.Address" class="selectpicker with-border" title="Select Job Type" data-live-search="true" required>
+
                 <option value="Addis Ababa">Addis Ababa</option>
                 <option value="Bahir Dar">Bahir Dar</option>
                 <option value="Gondar">Gondar</option>
                 <option value="Hawassa">Hawassa</option>
                 <option value="Dire Dawa">Dire Dawa</option>
                 <option value="Adama">Adama</option>
+
             </select>
-            @*@{
-                string city = Request.Form["Address"];
-                <input asp-for="user.Address"/>
-              
-                }*@
             
+            @*@{
+        string city = Request.Form["Address"];
+        <input asp-for="user.Address"/>
+
+        }*@
+
 
             <span asp-validation-for="user.Address"></span>
         </div>

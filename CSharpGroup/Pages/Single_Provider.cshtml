@@ -208,9 +208,19 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form asp-route-providerId="@Model.providerUser.Id" asp-route-loggedUserId="@Model.loggedUser.Id" asp-page-handler="hire" method="post">
-                    <button class="btn btn-primary">Confirm</button>
-                </form>
+                @if (Model.loggedUserEmail == null)
+                {
+                    <form asp-route-providerId="@Model.providerUser.Id" asp-page-handler="hire" method="post">
+                        <button class="btn btn-primary">Confirm</button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-route-providerId="@Model.providerUser.Id" asp-route-loggedUserId="@Model.loggedUser.Id" asp-page-handler="hire" method="post">
+                        <button class="btn btn-primary">Confirm</button>
+                    </form> 
+                }
+                
             </div>
         </div>
     </div>

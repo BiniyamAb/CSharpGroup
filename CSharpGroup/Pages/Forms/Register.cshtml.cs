@@ -23,7 +23,7 @@ namespace CSharpGroup.Pages.Forms
         {
             _mycontext = context;
         }
-        public async Task OnGetAsync(int providerId)
+        public  void OnGet(int providerId)
         {
             //    userList = await _mycontext.Users.ToListAsync();
             this.providerId = providerId;
@@ -31,10 +31,13 @@ namespace CSharpGroup.Pages.Forms
 
     public IActionResult OnPost(User user, int providerId)  
         {
-           
+
+            Console.WriteLine("{0}", user.FirstName);
 
             if (ModelState.IsValid)
             {
+               
+             
                 if (_mycontext.Users.Any(u => u.Email == user.Email))
                 {
                     ModelState.AddModelError("email", "Email already exists. Please login");
@@ -43,10 +46,12 @@ namespace CSharpGroup.Pages.Forms
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 user.Password = Hasher.HashPassword(user, user.Password);
 
+               
                 _mycontext.Add(user);
                 _mycontext.SaveChanges();
 
-                
+             
+
                 HttpContext.Session.SetString("email", user.Email);
 
 
