@@ -1,0 +1,45 @@
+﻿@page
+@model CSharpGroup.Pages.JobsModel
+@{
+}
+
+
+<br>
+<br>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Seeker Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">OrderCreated</th>
+                <th scope="col">OrderCompleted</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model._orderList)
+            {
+                <tr>
+                    <th scope="row">Nate</th>
+                    <td>Active</td>
+                    <td>22-12-2010</td>
+                    <td>30-12-2010</td>
+                </tr>
+            }
+            @* For loop end *@
+            <tr>
+                <th scope="row">Silver</th>
+                <td>Pending</td>
+                <td>22-2-2010</td>
+                <td>22-2-2010</td>
+            </tr>
+            <tr>
+                <th scope="row">Shania</th>
+                <td>Completed</td>
+                <td>22-2-2010</td>
+                <td>22-2-2010</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

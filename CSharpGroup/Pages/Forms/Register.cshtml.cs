@@ -48,7 +48,7 @@ namespace CSharpGroup.Pages.Forms
 
                 
                 HttpContext.Session.SetString("email", user.Email);
-
+                HttpContext.Session.SetString("role", user.Role);
 
                 if (providerId == 0)
                 {

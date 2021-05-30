@@ -50,8 +50,12 @@
                                                 <a class="btn btn-outline-secondary dropdown-toggle" asp-area="" asp-page="" type="button" id="dropdownmenubutton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownmenubutton">
                                                     <a class="dropdown-item" href="/Profile">Profile</a>
-                                                    <a class="dropdown-item" href="/Orders">Orders</a>
-                                                    <a class="dropdown-item" href="/Logout" asp-for="/Logout">Logout</a>
+                                                    @if (HttpContextAccessor.HttpContext.Session.GetString("role") == "provider")
+                                                    {
+                                                        <a class="dropdown-item" asp-page="/Jobs">Jobs</a>
+                                                    }
+                                                    <a class="dropdown-item" asp-page="/Orders">Orders</a>
+                                                    <a class="dropdown-item" asp-page="/Logout" asp-for="/Logout">Logout</a>
                                                 </div>
                                             </div>
                                         </li> } }
