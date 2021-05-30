@@ -251,3 +251,5 @@ C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSha
 C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Forms\Register.cshtml.g.cs
 C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Forms\Login.cshtml.g.cs
 C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Logout.cshtml.g.cs
+C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Profile.cshtml.g.cs
+C:\Users\Js\Desktop\C#Final\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Orders.cshtml.g.cs

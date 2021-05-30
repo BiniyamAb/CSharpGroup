@@ -29,6 +29,8 @@ namespace CSharpGroup.Pages.Forms
 
     public IActionResult OnPost(User user)  
         {
+           
+
             if (ModelState.IsValid)
             {
                 if (_mycontext.Users.Any(u => u.Email == user.Email))

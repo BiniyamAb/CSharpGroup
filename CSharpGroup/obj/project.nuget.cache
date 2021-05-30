@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4Lqq1LOSmT2UO1AeseuZT+ZUnq0JVyUm5+9NpfYtV1cHWW4TSo9U5sbFWpasDuGkohbjqra4V2+7bsyH1H0bfw==",
+  "dgSpecHash": "iWC+X6JkhsFaYJA8ol5/deqpomaHJrkdIxdBkBvggrtDOWX1FehJ+QtzHMxpxKZ7l60ET0DL0p87RUn1qWAf2Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Js\\Desktop\\C#Final\\CSharpGroup\\CSharpGroup\\CSharpGroup.csproj",
   "expectedPackageFiles": [
@@ -143,5 +143,12 @@
     "C:\\Users\\Js\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Js\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Js\\Desktop\\C#Final\\CSharpGroup\\CSharpGroup\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

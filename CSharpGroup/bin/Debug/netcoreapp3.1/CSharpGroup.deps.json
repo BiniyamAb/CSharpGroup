@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "CSharpGroup/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.6",
           "Microsoft.EntityFrameworkCore.Abstractions": "5.0.6",
           "Microsoft.EntityFrameworkCore.Design": "5.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6",

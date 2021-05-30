@@ -38,9 +38,24 @@
             <input asp-for="user.PhoneNo" class="form-control">
             <span asp-validation-for="user.PhoneNo"></span>
         </div>
+
         <div class="form-group">
             <label asp-for="user.Address"></label>
-            <input asp-for="user.Address" class="form-control">
+            <select name="city" id="city">
+                <option value="Addis Ababa">Addis Ababa</option>
+                <option value="Bahir Dar">Bahir Dar</option>
+                <option value="Gondar">Gondar</option>
+                <option value="Hawassa">Hawassa</option>
+                <option value="Dire Dawa">Dire Dawa</option>
+                <option value="Adama">Adama</option>
+            </select>
+            @*@{
+                string city = Request.Form["Address"];
+                <input asp-for="user.Address"/>
+              
+                }*@
+            
+
             <span asp-validation-for="user.Address"></span>
         </div>
         <button type="submit">Submit</button>
