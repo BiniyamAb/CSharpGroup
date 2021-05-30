@@ -1,12 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CSharpGroup</title>
-
-    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" />
-    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")" asp-append-version="true"/>
+    <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" asp-append-version="true"/>
+    <link rel="stylesheet" href="@Url.Content("~/css/site.css")" asp-append-version="true"/>
+    <link rel="stylesheet" href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")" asp-append-version="true" />
     @RenderSection("styles", false)
 
 </head>
@@ -20,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link links" asp-area="" asp-page="/AdminCat" style="color: #735798">About</a>
+                        <a class="nav-link links" asp-area="" asp-page="/About" style="color: #735798">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Services" style="color: #735798">Services</a>
@@ -28,15 +31,33 @@
                     <li class="nav-item">
                         <a class="nav-link links" asp-area="" asp-page="/Contact" style="color: #735798">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link links" asp-area="" asp-page="/Forms/Register" style="color: #735798">Signup/Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link links" asp-area="" asp-page="/Logout" style="color: #735798">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-secondary providerbtn" asp-area="" asp-page="/BecomeaProvider">Become a Provider</a>
-                    </li>
+                    @*if session is false display signup/login*@
+                    @*else display profile icon*@
+
+                    @{ if (HttpContextAccessor.HttpContext.Session.GetString("email") == null)
+                                    {
+                        <li class="nav-item">
+                            <a class="nav-link links" asp-area="" asp-page="/AuthOption" asp-route-providerId="0" style="color: #735798">Signup/Login</a>
+                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn btn-outline-secondary providerbtn" asp-area="" asp-page="/BecomeaProvider">Become a Provider</a>
+                                        </li> }
+                                                    else
+                                                    {
+
+                                        <li class="nav-item mr-4">
+                                            <div class="dropdown mr-4">
+                                                <a class="btn btn-outline-secondary dropdown-toggle" asp-area="" asp-page="" type="button" id="dropdownmenubutton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt"></i></a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownmenubutton">
+                                                    <a class="dropdown-item" href="/Profile">Profile</a>
+                                                    <a class="dropdown-item" href="/Orders">Orders</a>
+                                                    <a class="dropdown-item" href="/Logout" asp-for="/Logout">Logout</a>
+                                                </div>
+                                            </div>
+                                        </li> } }
+
+
+
                 </ul>
 
             </div>

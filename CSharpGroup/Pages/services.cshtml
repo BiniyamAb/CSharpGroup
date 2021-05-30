@@ -51,17 +51,22 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    
-    @foreach (var item in Model.categoryList)
-    {
-    <div class="card" style="width: 18rem;">
-        <img src="@item.Image" class="card-img-top" alt="...">
-        <div class="card-body">
-            <p class="card-text">@item.Name</p>
-        </div>
+<div class="container-fluid d-flex px-5 mx-5 py-3row">
+    <h1 class="align-self-center text-center col-md-12 mt-4">Services We Have Got</h1>
+</div>
+
+<div class="container my-3 d-flex align-items-center">
+    <div class="container row mx-2">
+        @foreach (var item in Model.categoryList)
+        {
+            <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
+                <img src="@item.Image" class="card-img-top" alt="..." style="height: 15rem">
+                <div class="card-body">
+                    <a asp-page="/EachService" asp-route-id="@item.Id"><p class="card-text text-center services-a-tag">@item.Name</p></a>
+                </div>
+            </div>
+        }
     </div>
-    }
 </div>
 
 

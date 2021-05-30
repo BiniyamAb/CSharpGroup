@@ -13,7 +13,7 @@ namespace CSharpGroup.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NumProviders = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -34,7 +34,7 @@ namespace CSharpGroup.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue:"./img/default.png"),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

@@ -1,0 +1,199 @@
+﻿@page
+@model CSharpGroup.Pages.AboutModel
+@{
+    ViewData["Title"] = "About Page";
+}
+@section styles{
+    <link rel="stylesheet" href="@Url.Content("~/css/styleAbout.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/styleContact.css")">
+}
+<div class="intro-banner container-fluid" >
+
+   
+    <div class="container" >
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner-headline">
+                    <h3>
+                        <strong>Hire experts! Connect with Service Providers and hire for any job, any time.</strong>
+                        <br>
+                        <span>
+                            Service Provider is a trusted platform that connects people who need to outsource tasks and find local services, with people who are looking to earn money and ready to work.
+
+
+                        </span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<section class="section pb-0 z_three">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4 col-sm-6 mb-lg- mb-4">
+                <div class="hover-bg-primary text-center position-relative px-4 py-5 rounded-lg shadow">
+                    <div class="help-box-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+
+                    <h5 class="pt-5 pb-3 text-capitalize card-title">What do you need done?</h5>
+                    <p class="mb-4">
+                        Start by telling us about your task.  Mention when and where (in person or online) you need it done,  then suggest a fair budget for the task.
+                        Post any task you need from cleaning to web design in only two  minutes – for free! There's no obligation to hire.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-lg- mb-4">
+                <div class="hover-bg-primary text-center position-relative px-4 py-5 rounded-lg shadow">
+                    <div class="help-box-icon">
+                        <i class="fab fa-cloudversify"></i>
+                    </div>
+
+                    <h5 class="pt-5 pb-3 text-capitalize card-title">Task completed</h5>
+                    <p class="mb-4">
+                        With your task complete, you just need to release the payment held with Seekkr Escrow.  Then you’re free to leave a review for the
+                        Tasker / Service Provider so everyone can know what a great job they’ve done!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-lg- mb-4">
+                <div class="hover-bg-primary text-center position-relative px-4 py-5 rounded-lg shadow">
+                    <div class="help-box-icon">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+
+                    <h5 class="pt-5 pb-3 text-capitalize card-title">Choose the best person for you</h5>
+                    <p class="mb-4">
+                        Take a look at profiles and reviews to pick the best Tasker / Service Provider for your task. When you accept an offer, your payment is held securely with SAS Escrow until the task is complete. Now you can  message and call the
+                        Tasker / Service Provider to sort out the details
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about">
+    <div class="title">
+        <h4 class="title text-center">OUR TEAM  </h4>
+    </div>
+    <div class="container-fluid d-flex justify-content-center">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-2">
+                <div class="card p-3 py-4 mt-5 mb-5">
+                    <div class="text-center">
+                        <img src="~/img/amlypp.jpg" width="100" class="rounded-circle">
+                        <h6 class="mt-2">Amsale Gebrehana</h6>  <small class="mt-4"> Software engineering student at Addis Ababa University, Ethiopia</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card p-3 py-4 mt-5 mb-5">
+                    <div class="text-center">
+                        <img src="~/img/aydapp.jpg" width="100" class="rounded-circle">
+                        <h6 class="mt-2">Ayda Sultan</h6>  <small class="mt-4"> Software engineering student at Addis Ababa University, Ethiopia</small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <div class="card p-3 py-4 mt-5 mb-5">
+                    <div class="text-center">
+                        <img src="~/img/binipp.jpg" width="100" class="rounded-circle">
+                        <h6 class="mt-2">Biniyam Abiy</h6>  <small class="mt-4"> Software engineering student at Addis Ababa University, Ethiopia</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 ">
+                <div class="card p-3 py-4 mt-5">
+                    <div class="text-center">
+                        <img src="~/img/selpp.jpg" width="100" class="rounded-circle">
+                        <h6 class="mt-2">Selamawit Elias</h6>  <small class="mt-4"> Software engineering student at Addis Ababa University, Ethiopia</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card p-3 py-4 mt-5">
+                    <div class="text-center">
+                        <img src="~/img/sitpp.jpg" width="100" class="rounded-circle">
+                        <h6 class="mt-2">Sitota Ezra</h6>  <small class="mt-4"> Software engineering student at Addis Ababa University, Ethiopia</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======= Frequently Asked Questions Section ======= -->
+<section id="faq" class="faq section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+
+        </div>
+
+        <div class="faq-list">
+            <ul>
+                <li data-aos="fade-up">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse" href="#faq-list-1">
+                        In which cases will I use your platform? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="faq-list-1" class="collapse show" data-parent=".faq-list">
+                        <p>
+                            Anytime you are looking for a contractor or freelancer for a specific task you can use or platform to connect with numerous service providers near you at an affordable price and 100% quality work.
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">
+                        How do I pay my provider? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="faq-list-2" class="collapse" data-parent=".faq-list">
+                        <p>
+                            Once a job is completed, your provider will invoice for hours worked plus any agreed-upon expenses. You will enter the unique set of characters given to you while ordering the task and payment will be processed. You are required to pay the calculated amount on site with cash to your provider.
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-3" class="collapsed">
+                        What is the service fee charge for your platform? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="faq-list-3" class="collapse" data-parent=".faq-list">
+                        <p>
+                            When you book a job, you can see Provider's hourly rates. This is inclusive of the hourly rate your provider sets and the 15% platform's service fee.
+                        </p>
+                    </div>
+                </li>
+
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-4" class="collapsed">
+                        Can we help with professional services? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="faq-list-4" class="collapse" data-parent=".faq-list">
+                        <p>
+                            Our platform connects Clients with Providers. We do have a number of categories to choose from feel free to browse among our services and choose the one that fits you.
+                        </p>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+    </div>
+</section><!-- End Frequently Asked Questions Section -->
