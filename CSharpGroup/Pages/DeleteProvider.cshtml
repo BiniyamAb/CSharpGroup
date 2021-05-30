@@ -1,0 +1,88 @@
+﻿@page
+@model CSharpGroup.Pages.DeleteProviderModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Delete Category</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style4.css" />
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+    <div class="container con">
+
+        <div class="row row1">
+            <div class="col-md-12">
+
+                <h3>Are you sure you want to delete this Account?</h3>
+
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="user.FirstName">First Name:  </label>
+                        <input asp-for="user.FirstName" style="border:none;" readonly />
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="user.LastName">Lat Name:  </label>
+                        <input asp-for="user.LastName" style="border:none;" readonly />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="provider.Description">Description:  </label>
+                        <input asp-for="provider.Description" style="border:none;" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="provider.Category">Number of providers:  </label>
+                        <input asp-for="provider.Category" style="border:none;" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="user.Image">Image:  </label>
+                        <input asp-for="user.Image" type="image" src="~/img/vs.PNG" style="border:none; width:80px; height:80px;" readonly />
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top:20px; width:80px; height:40px; font-size:18px;">Delete</button>
+
+
+                </form>
+
+                @* <button  id="cancel" class="btn btn-primary" style="margin-top:20px; width:80px; height:40px; font-size:18px; margin-left:20px;">Cancel</button>*@
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    @*<script >
+            var can = document.getElementById("cancel");
+
+            function cancel() {
+                window.location.replace("./AdminCat");
+            }
+
+            can.onclick = cancel();
+        </script>*@
+
+
+</body>
+</html>

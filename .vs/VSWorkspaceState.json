@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\CSharpGroup",
-    "\\CSharpGroup\\Models"
+    "\\CSharpGroup\\Models",
+    "\\CSharpGroup\\Pages",
+    "\\CSharpGroup\\Pages\\Forms"
   ],
-  "SelectedNode": "\\CSharpGroup.sln",
+  "SelectedNode": "\\CSharpGroup\\Pages\\EditCategory.cshtml.cs",
   "PreviewInSolutionExplorer": false
 }
