@@ -101,3 +101,4 @@ C:\Users\hp\Source\Repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpG
 C:\Users\hp\Source\Repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.dll
 C:\Users\hp\Source\Repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.pdb
 C:\Users\hp\Source\Repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\CSharpGroup.genruntimeconfig.cache
+C:\Users\hp\Source\Repos\CSharpGroup\CSharpGroup\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout2.cshtml.g.cs
