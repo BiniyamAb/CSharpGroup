@@ -184,11 +184,20 @@
                                             <div class="col-xl-6">
                                                 <div class="submit-field">
                                                     <h5>Choose a Category</h5>
-                                                    <select asp-for="provider.Category" class="selectpicker with-border"  title="Select Job Type" data-live-search="true" required>
-                                                        <option selected>Cleaning</option>
-                                                        <option>Delivery</option>
-                                                        <option>Electrician</option>
-                                                        <option>Mechanic</option>
+                                                    <select asp-for="provider.Category" class="selectpicker with-border" title="Select Job Type" data-live-search="true" required>
+
+                                                        @for (int i = 0; i < Model.categorylist.Count; i++)
+                                                        {
+                                                            if (i == 0)
+                                                            {
+                                                                <option selected>@Model.categorylist[i].Name</option>
+                                                                continue;
+                                                            }
+
+                                                            <option>@Model.categorylist[i].Name</option>
+                                                        }
+
+                                                      
 
                                                     </select>
                                                 </div>

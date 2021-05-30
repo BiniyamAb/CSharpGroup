@@ -71,9 +71,6 @@ namespace CSharpGroup.Migrations
                     b.Property<int>("SeekerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SeekerId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -84,7 +81,7 @@ namespace CSharpGroup.Migrations
 
                     b.HasIndex("ProviderId");
 
-                    b.HasIndex("SeekerId1");
+                    b.HasIndex("SeekerId");
 
                     b.ToTable("Orders");
                 });
@@ -117,12 +114,9 @@ namespace CSharpGroup.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Providers");
                 });
@@ -152,8 +146,10 @@ namespace CSharpGroup.Migrations
 
             modelBuilder.Entity("CSharpGroup.Models.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -199,7 +195,9 @@ namespace CSharpGroup.Migrations
 
                     b.HasOne("CSharpGroup.Models.User", "Seeker")
                         .WithMany()
-                        .HasForeignKey("SeekerId1");
+                        .HasForeignKey("SeekerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Provider");
 
@@ -210,7 +208,9 @@ namespace CSharpGroup.Migrations
                 {
                     b.HasOne("CSharpGroup.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

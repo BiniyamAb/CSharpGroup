@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="@Url.Content("~/css/style2.css")">
 }
 
+
 <!-- Titlebar
 ================================================== -->
 <div class="single-page-header freelancer-header" data-background-image="images/single-freelancer.jpg">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="single-page-header-inner">
+                <div class="single-page-header-inxner">
                     <div class="left-side">
                         <div class="header-image freelancer-avatar"><img src=".@Model.providerUser.Image" alt=""></div>
                         <div class="header-details">
@@ -149,7 +150,8 @@
                     if (Model.loggedUserEmail == null)
                     {
                         <a asp-page="/AuthOption" asp-route-providerId="@Model.providerUser.Id" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary">
-                        Sign In to hire</a>              
+                            Sign In to hire
+                        </a>
                     }
                     else
                     {
@@ -158,7 +160,7 @@
                         </button>
                     }
                 }
-                
+
                 @*<a href="#small-dialog" class="">Make an Offer <i class="icon-material-outline-arrow-right-alt"></i></a>*@
 
 
