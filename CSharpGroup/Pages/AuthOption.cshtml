@@ -1,0 +1,37 @@
+﻿@page  "{providerId}"
+@{
+    Layout = "_Layout2";
+}
+@model CSharpGroup.Pages.AuthOptionModel
+
+
+
+<div class="row">
+    <div class="col-12 mx-auto">
+        <div class="myform form ">
+            <form action="" method="post" name="login">
+                <div id="authBtns" class="form-group">
+
+
+                    <div class="text-center ">
+                        <a type="button" asp-page="/Forms/Register" asp-route-providerId="@Model.providerId" class="btn btn-block send-button button1 my-2">Sign Up</a>
+                    </div>
+                    <div class="text-center ">
+                        <a type="button" asp-page="/Forms/Login" asp-route-providerId="@Model.providerId" class="btn btn-block btn-outline-secondary send-button button2 my-2">Log In</a>
+                    </div>
+
+
+
+                </div>
+                <div id="terms" class="form-group">
+                    <span>
+                        By signing up  you agree to our
+                        <a target="_blank" href="/Privacy" id="specLink">Terms of Service</a>
+                        and
+                        <a target="_blank" href="/Privacy" id="specLink">Privacy Policy</a>.
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

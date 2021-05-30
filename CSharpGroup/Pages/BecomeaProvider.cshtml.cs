@@ -14,15 +14,18 @@ namespace CSharpGroup.Pages
     public class BecomeaProviderModel : PageModel
     {
         public IList<User> userlist;
+        public IList<Category> categorylist;
         private readonly CSharpGroupContext _mycontext;
         public User user { get; set; }
         public Provider provider { get; set; }
+
         public BecomeaProviderModel(CSharpGroupContext context)
         {
             _mycontext = context;
         }
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            categorylist = await _mycontext.Categories.ToListAsync();
         }
         public IActionResult OnPost(User user, Provider provider)
         {
@@ -40,7 +43,7 @@ namespace CSharpGroup.Pages
                 
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 user.Password = Hasher.HashPassword(user, user.Password);
-                user.Role = "provider";
+                user.Role = "providerRequesting";
                 var users = _mycontext.Users.Add(user);
                 _mycontext.SaveChanges();
 

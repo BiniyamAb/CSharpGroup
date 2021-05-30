@@ -28,7 +28,7 @@ namespace CSharpGroup
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddHttpContextAccessor();
             services.AddDbContext<CSharpGroupContext>(options =>
                 options.UseSqlServer("server=(localdb)\\mssqllocaldb;Database=myDb;User Id=Csharp;Password=Csharp;Trusted_Connection=True;MultipleActiveResultSets=true "));
             services.AddRazorPages();

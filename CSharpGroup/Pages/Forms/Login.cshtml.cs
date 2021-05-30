@@ -13,8 +13,8 @@ namespace CSharpGroup.Pages.Forms
 {
     public class LoginModel : PageModel
     {
-    
-            public IList<User> userList;
+        public int providerId;
+        public IList<User> userList;
             private readonly CSharpGroupContext _mycontext;
 
             public User user { get; set; }
@@ -22,13 +22,15 @@ namespace CSharpGroup.Pages.Forms
             {
                 _mycontext = context;   
             }
-            public void OnGet()
+        public void OnGet(int providerId)
             {
-
+            this.providerId = providerId;
             }
 
-        public IActionResult OnPost(LoginUser userSubmission)
+        public IActionResult OnPost(LoginUser userSubmission, int providerId)
         {
+           
+
             if (ModelState.IsValid)
             {
                 var userInDb = _mycontext.Users.FirstOrDefault(u => u.Email == userSubmission.Email);
@@ -49,7 +51,16 @@ namespace CSharpGroup.Pages.Forms
                     else
                     { 
                         HttpContext.Session.SetString("email", userInDb.Email);
-                        return RedirectToPage("/Index");
+                       
+                        if (providerId == 0)
+                        {
+                            return RedirectToPage("/Index");
+                        }
+                        
+                             
+                        return RedirectToPage("/Single_Provider", new { id = providerId });
+                        
+                        
                     }
                 }
 

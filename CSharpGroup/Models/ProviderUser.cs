@@ -22,5 +22,7 @@ namespace CSharpGroup.Models
         public decimal PerHourWage { get; set; }
         public string Recommendation { get; set; }
         public double AverageRating { get; set; }
+
+        
     }
 }

@@ -1,11 +1,15 @@
-﻿@page
+﻿@page  "{providerId}"
+@{
+    Layout = "_Layout2";
+}
 @model CSharpGroup.Pages.Forms.LoginModel
 @{
 }
 
+
 <div>
     @Html.ValidationMessage("Email")
-    <form method="post">
+    <form method="post" asp-route-providerId="@Model.providerId">
         <div class="form-group">
             <label asp-for="user.Email"></label>
             <input asp-for="user.Email" class="form-control" name="email">
@@ -18,6 +22,9 @@
             <span asp-validation-for="user.Password"></span>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-block send-button button1">Log In</button>
     </form>
 </div>
+
+
+

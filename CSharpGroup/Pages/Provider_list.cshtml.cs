@@ -21,9 +21,9 @@ namespace CSharpGroup.Pages
         {
             _mycontext = context;
         }
-        public void OnGetAsync(int id)
+        public async Task OnGetAsync(int id)
         {
-            string categoryName = _mycontext.Categories.SingleOrDefault(c => c.Id == id).Name;
+            var category = await _mycontext.Categories.SingleOrDefaultAsync(c => c.Id == id);
             //providersList = await _mycontext.Users.Where(u => u.Role == "provider").ToListAsync();
             providersList = _mycontext.Providers
                     .Join(
@@ -57,7 +57,7 @@ namespace CSharpGroup.Pages
                     //    BookTitle = book.Title
                     //}
                     )
-                    .Where(p => p.Category == categoryName)
+                    .Where(p => p.Category.ToUpper() == category.Name.ToUpper())
                     .ToList();
 
 

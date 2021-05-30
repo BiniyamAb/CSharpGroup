@@ -43,7 +43,8 @@ namespace CSharpGroup.Models
 
         public string Image { get; set; }
         [Required]
-        public string Address { get; set; }
+        
+        public string  Address{ get; set; }
         public string Role { get; set; }
 
 

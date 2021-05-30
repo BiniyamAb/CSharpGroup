@@ -1,4 +1,4 @@
-﻿@page "{id}"
+﻿@page "{id:int}"
 @model CSharpGroup.Pages.Provider_listModel
 @{
     ViewData["Title"] = "Provider list";
@@ -157,7 +157,7 @@
                 
                     <a asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
 
-                         Job Listing Details 
+                        
                         <div class="job-listing-details">
                             
                             <div class="job-listing-company-logo">

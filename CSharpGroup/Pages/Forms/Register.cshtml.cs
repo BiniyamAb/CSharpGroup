@@ -14,6 +14,7 @@ namespace CSharpGroup.Pages.Forms
 {
     public class RegisterModel : PageModel
     {
+        public int providerId = 0;
         public IList<User> userList;
         private readonly CSharpGroupContext _mycontext;
 
@@ -22,13 +23,16 @@ namespace CSharpGroup.Pages.Forms
         {
             _mycontext = context;
         }
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int providerId)
         {
             //    userList = await _mycontext.Users.ToListAsync();
+            this.providerId = providerId;
         }
 
-    public IActionResult OnPost(User user)  
+    public IActionResult OnPost(User user, int providerId)  
         {
+           
+
             if (ModelState.IsValid)
             {
                 if (_mycontext.Users.Any(u => u.Email == user.Email))
@@ -45,7 +49,14 @@ namespace CSharpGroup.Pages.Forms
                 
                 HttpContext.Session.SetString("email", user.Email);
 
-                return RedirectToPage("/Index");
+
+                if (providerId == 0)
+                {
+                    return RedirectToPage("/Index");
+                }
+
+
+                return RedirectToPage("/Single_Provider", new { id = providerId });
             }
             return Page();
 
