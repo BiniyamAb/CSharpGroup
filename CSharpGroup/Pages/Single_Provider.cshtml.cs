@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using CSharpGroup.Data;
 using Microsoft.AspNetCore.Http;
 using CSharpGroup.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CSharpGroup.Pages
 {
@@ -14,7 +15,9 @@ namespace CSharpGroup.Pages
     {
         public ProviderUser providerUser;
         private readonly CSharpGroupContext _mycontext;
+        public Order _order;
         public string loggedUserEmail;
+        public User loggedUser;
         //public Category item;
         //private readonly CategoryService _myService;
 
@@ -22,12 +25,16 @@ namespace CSharpGroup.Pages
         {
             _mycontext = context;
         }
-        public void OnGetAsync(int id)
+
+        public async Task OnGetAsync(int id)
         {
+            
+            HttpContext.Session.SetString("email", "bini@gmail.com");
             loggedUserEmail = HttpContext.Session.GetString("email");
+            loggedUser = await _mycontext.Users.SingleOrDefaultAsync(c => c.Email == loggedUserEmail);
             //string categoryName = _mycontext.Categories.SingleOrDefault(c => c.Id == id).Name;
             //providersList = await _mycontext.Users.Where(u => u.Role == "provider").ToListAsync();
-            providerUser = _mycontext.Providers
+            providerUser = await _mycontext.Providers
                     .Join(
                         _mycontext.Users,
                         provider => provider.UserId,
@@ -60,20 +67,30 @@ namespace CSharpGroup.Pages
                     //}
                     )
                     .Where(p => p.Id == id)
-                    .SingleOrDefault();
+                    .SingleOrDefaultAsync();
+            
+            _order = await _mycontext.Orders
+                    .Where(o => o.SeekerId == loggedUser.Id && o.ProviderId == providerUser.ProviderId && !o.IsCompleted && o.Status != "declined")
+                    .SingleOrDefaultAsync();
         }
 
-        //public IActionResult OnPostHire()
-        //{
-            
-    
-        //    if ()
-        //    {
-        //        return RedirectToPage("/Index", new { providerId = providerUser.Id});
-        //    }
-        //    User loggedUser = _mycontext.Users.SingleOrDefault(c => c.Email == userEmail);
-        //    return Page();
+        public IActionResult OnPostHire(int providerId, int loggedUserId)
+        {
+            var newOrder = new Order
+            {
+                Status = "pending",
+                IsCompleted = false,
+                ProviderId = providerId,
+                SeekerId = loggedUserId
+            };
 
-        //}
+            _mycontext.Add(newOrder);
+            _mycontext.SaveChanges();
+            Console.WriteLine($"status: {newOrder.Status}\nProviderId: {newOrder.ProviderId}\n SeekerId: {newOrder.SeekerId}");
+
+
+            return RedirectToPage("/Single_Provider", new { id = providerId});
+
+        }
     }
 }

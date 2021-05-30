@@ -18,10 +18,11 @@ namespace CSharpGroup.Models
         public DateTime StartTime { get; set; }
         public double SavedTime { get; set; }
         public DateTime EndTime { get; set; }
+        
         public int ProviderId { get; set; }
-        public int SeekerId { get; set; }
-
         public Provider Provider { get; set; }
+
+        public int SeekerId { get; set; }
         public User Seeker { get; set; }
     }
 }
