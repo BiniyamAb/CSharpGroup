@@ -27,7 +27,7 @@ namespace CSharpGroup.Pages
         {
             categorylist = await _mycontext.Categories.ToListAsync();
         }
-        public IActionResult OnPost(User user, Provider provider)
+        public IActionResult OnPostRegisterProvider(User user, Provider provider)
         {
             if (ModelState.IsValid)
             {
