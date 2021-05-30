@@ -17,7 +17,7 @@ namespace CSharpGroup.Pages
         private readonly CSharpGroupContext _mycontext;
         public Order _order;
         public string loggedUserEmail;
-        public User loggedUser;
+        public User loggedUser= null;
         //public Category item;
         //private readonly CategoryService _myService;
 
@@ -29,9 +29,9 @@ namespace CSharpGroup.Pages
         public async Task OnGetAsync(int id)
         {
             
-            HttpContext.Session.SetString("email", "bini@gmail.com");
+           
             loggedUserEmail = HttpContext.Session.GetString("email");
-            loggedUser = await _mycontext.Users.SingleOrDefaultAsync(c => c.Email == loggedUserEmail);
+           
             //string categoryName = _mycontext.Categories.SingleOrDefault(c => c.Id == id).Name;
             //providersList = await _mycontext.Users.Where(u => u.Role == "provider").ToListAsync();
             providerUser = await _mycontext.Providers
@@ -68,10 +68,17 @@ namespace CSharpGroup.Pages
                     )
                     .Where(p => p.Id == id)
                     .SingleOrDefaultAsync();
+            if (loggedUserEmail != null)
+            {
+                loggedUser = await _mycontext.Users.SingleOrDefaultAsync(c => c.Email == loggedUserEmail);
+
+                _order = await _mycontext.Orders
+                  .Where(o => o.SeekerId == loggedUser.Id && o.ProviderId == providerUser.ProviderId && !o.IsCompleted && o.Status != "declined")
+                  .SingleOrDefaultAsync();
+            }
             
-            _order = await _mycontext.Orders
-                    .Where(o => o.SeekerId == loggedUser.Id && o.ProviderId == providerUser.ProviderId && !o.IsCompleted && o.Status != "declined")
-                    .SingleOrDefaultAsync();
+
+          
         }
 
         public IActionResult OnPostHire(int providerId, int loggedUserId)
