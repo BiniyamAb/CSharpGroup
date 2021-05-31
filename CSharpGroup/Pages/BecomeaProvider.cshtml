@@ -154,9 +154,10 @@
                                             <div class="col-xl-4">
                                                 <div class="submit-field">
                                                     <div class="upload-button"></div>
-                                                    <label asp-for="provider.Recommendation">Attachments</label>
-                                                    <input asp-for="provider.Recommendation" class="file-upload" type="file" accept="application/pdf" required />
-                                                    <button>Upload Recommendation</button>
+                                                    <label asp-for="provider.Recommendation">Enter your recommendation letter link (Uploaded from google drive)</label>
+                                                    <input asp-for="provider.Recommendation" type="url" required />
+                                                    <p><small>For more information on how to upload a file to google drive <a href="https://youtu.be/GQVGr_OM18Q" style="text-decoration: none;">click here</a></small></p>
+                                                  
                                                     <!-- Attachments-->
                                                     <div class="clearfix"></div>
 
@@ -223,6 +224,7 @@
 
                 <!-- Button -->
                 <div class="col-xl-12">
+                    <p>Note: Your request will be processed once you save your changes. You will be listed as a provider once the verfication is done!</p>
                     <button class="button ripple-effect big margin-top-30" type="submit">
                         Save Changes
                     </button>

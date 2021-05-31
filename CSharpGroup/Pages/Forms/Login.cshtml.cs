@@ -52,7 +52,10 @@ namespace CSharpGroup.Pages.Forms
                     { 
                         HttpContext.Session.SetString("email", userInDb.Email);
                         HttpContext.Session.SetString("role", userInDb.Role);
-                       
+                        if (userInDb.Role == "admin")
+                        {
+                            return RedirectToPage("/AdminCat");
+                        }
                         if (providerId == 0)
                         {
                             return RedirectToPage("/Index");

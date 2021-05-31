@@ -48,11 +48,20 @@ namespace CSharpGroup.Pages
             }
             user = await _mycontext.Users.FindAsync(id);
             provider = await _mycontext.Providers.FindAsync(id);
+            var flag = 0;
+            if (user.Role == "providerRequesting")
+            {
+                flag = 1;
+            }
             if (provider != null && user != null)
             {
                 _mycontext.Providers.Remove(provider);
                 _mycontext.Users.Remove(user);
                 await _mycontext.SaveChangesAsync();
+            }
+            if(flag == 1)
+            {
+                return RedirectToPage("./AdminRequests");
             }
 
             return RedirectToPage("./AdminProvider");
