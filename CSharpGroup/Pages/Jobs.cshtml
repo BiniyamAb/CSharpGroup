@@ -7,39 +7,69 @@
 <br>
 <br>
 <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Seeker Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">OrderCreated</th>
-                <th scope="col">OrderCompleted</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model._orderList)
-            {
+
+    @if (Model._orderList != null)
+    {
+        <table class="table">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="row">Nate</th>
-                    <td>Active</td>
-                    <td>22-12-2010</td>
-                    <td>30-12-2010</td>
+                    <th scope="col">Seeker Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+
                 </tr>
-            }
-            @* For loop end *@
-            <tr>
-                <th scope="row">Silver</th>
-                <td>Pending</td>
-                <td>22-2-2010</td>
-                <td>22-2-2010</td>
-            </tr>
-            <tr>
-                <th scope="row">Shania</th>
-                <td>Completed</td>
-                <td>22-2-2010</td>
-                <td>22-2-2010</td>
-            </tr>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @{ 
+                    var acceptedOrder = Model._mycontext.Orders
+                                        .Where(o => o.Status == "accepted" && !o.IsCompleted &&
+                                                o.ProviderId == Model.loggedProviderId)
+                                        .SingleOrDefault();
+                }
+                @if (acceptedOrder != null)
+                {
+                    foreach (var item in Model._orderList)
+                    {
+                        var user = Model._mycontext.Users.Where(u => u.Id == item.SeekerId).SingleOrDefault();
+                        <tr>
+                            <th scope="row">@user.FirstName @user.LastName</th>
+                            <td>@user.Address</td>
+                            <td>
+                                <form asp-route-orderId="@item.Id" asp-page-handler="accept" method="post">
+                                    <button class="btn btn-success">Accept</button>
+                                </form>
+                                <form asp-route-orderId="@item.Id" asp-page-handler="decline" method="post">
+                                    <button class="btn btn-danger">Decline</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    var ordersAwaiting = Model._orderList.Count();
+                    var userUndertaking = Model._mycontext.Users.Where(u => u.Id == acceptedOrder.SeekerId).SingleOrDefault();
+                        <tr>
+                            <th scope="row">@userUndertaking.FirstName @userUndertaking.LastName</th>
+                            <td>@userUndertaking.Address</td>
+                            <td>Undertaking...</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                You have @ordersAwaiting other requests waiting. Finish the task at hand to accept another one
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>You Have No Job Requests Currently!</h1>
+    }
+
+
+
+
 
 </div>

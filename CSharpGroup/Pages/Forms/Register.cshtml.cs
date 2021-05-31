@@ -32,8 +32,6 @@ namespace CSharpGroup.Pages.Forms
     public IActionResult OnPost(User user, int providerId)  
         {
 
-            Console.WriteLine("{0}", user.FirstName);
-
             if (ModelState.IsValid)
             {
                
@@ -45,15 +43,17 @@ namespace CSharpGroup.Pages.Forms
                 }
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 user.Password = Hasher.HashPassword(user, user.Password);
+                user.Role = "user";
 
                
                 _mycontext.Add(user);
                 _mycontext.SaveChanges();
 
-             
 
-                HttpContext.Session.SetString("email", user.Email);
                 HttpContext.Session.SetString("role", user.Role);
+                HttpContext.Session.SetString("email", user.Email);
+                
+
 
                 if (providerId == 0)
                 {

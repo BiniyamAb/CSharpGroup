@@ -25,7 +25,7 @@ namespace CSharpGroup.Pages
         {
             var category = await _mycontext.Categories.SingleOrDefaultAsync(c => c.Id == id);
             //providersList = await _mycontext.Users.Where(u => u.Role == "provider").ToListAsync();
-            providersList = _mycontext.Providers
+            providersList = await _mycontext.Providers
                     .Join(
                         _mycontext.Users,
                         provider => provider.UserId,
@@ -37,6 +37,7 @@ namespace CSharpGroup.Pages
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             Address = user.Address,
+                            Role = user.Role,
                             JobsDone = provider.JobsDone,
                             AverageRating = provider.AverageRating,
                             PerHourWage = provider.PerHourWage,
@@ -57,8 +58,8 @@ namespace CSharpGroup.Pages
                     //    BookTitle = book.Title
                     //}
                     )
-                    .Where(p => p.Category.ToUpper() == category.Name.ToUpper())
-                    .ToList();
+                    .Where(p => p.Category.ToUpper() == category.Name.ToUpper() && p.Role == "provider")
+                    .ToListAsync();
 
 
             //var category = new Category { Name = "Delivery", Image = "./img/delivery.jpg", NumProviders = 5, Description = "Delivey Category" };

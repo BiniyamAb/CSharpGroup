@@ -18,6 +18,7 @@ namespace CSharpGroup.Pages
         public Order _order;
         public string loggedUserEmail;
         public User loggedUser= null;
+        public int idForProvider;
         //public Category item;
         //private readonly CategoryService _myService;
 
@@ -31,7 +32,7 @@ namespace CSharpGroup.Pages
             
            
             loggedUserEmail = HttpContext.Session.GetString("email");
-           
+            idForProvider = id;
             //string categoryName = _mycontext.Categories.SingleOrDefault(c => c.Id == id).Name;
             //providersList = await _mycontext.Users.Where(u => u.Role == "provider").ToListAsync();
             providerUser = await _mycontext.Providers
@@ -46,6 +47,7 @@ namespace CSharpGroup.Pages
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             Address = user.Address,
+                            Role = user.Role,
                             JobsDone = provider.JobsDone,
                             AverageRating = provider.AverageRating,
                             PerHourWage = provider.PerHourWage,
@@ -70,19 +72,23 @@ namespace CSharpGroup.Pages
                     .SingleOrDefaultAsync();
             if (loggedUserEmail != null)
             {
+                
                 loggedUser = await _mycontext.Users.SingleOrDefaultAsync(c => c.Email == loggedUserEmail);
-
                 _order = await _mycontext.Orders
-                  .Where(o => o.SeekerId == loggedUser.Id && o.ProviderId == providerUser.ProviderId && !o.IsCompleted && o.Status != "declined")
-                  .SingleOrDefaultAsync();
+                    .Where(o => o.SeekerId == loggedUser.Id)
+                    .Where(o => o.ProviderId == providerUser.Id)
+                    .Where(o => !o.IsCompleted)
+                    .Where(o => o.Status != "declined")
+                    .FirstOrDefaultAsync();
             }
             
 
           
         }
 
-        public IActionResult OnPostHire(int providerId, int loggedUserId)
+        public async Task<IActionResult> OnPostHireAsync(int providerId, int loggedUserId)
         {
+            Console.WriteLine("workin here...");
             var newOrder = new Order
             {
                 Status = "pending",
@@ -90,13 +96,14 @@ namespace CSharpGroup.Pages
                 ProviderId = providerId,
                 SeekerId = loggedUserId
             };
-
-            _mycontext.Add(newOrder);
-            _mycontext.SaveChanges();
             Console.WriteLine($"status: {newOrder.Status}\nProviderId: {newOrder.ProviderId}\n SeekerId: {newOrder.SeekerId}");
+            await _mycontext.AddAsync(newOrder);
+
+            Console.WriteLine($"status: {newOrder.Status}\nProviderId: {newOrder.ProviderId}\n SeekerId: {newOrder.SeekerId}");
+            await _mycontext.SaveChangesAsync();
 
 
-            return RedirectToPage("/Single_Provider", new { id = providerId});
+            return RedirectToPage("/Single_Provider", new { id = providerId });
 
         }
     }

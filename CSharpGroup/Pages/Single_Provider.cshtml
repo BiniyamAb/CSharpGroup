@@ -146,37 +146,33 @@
                 </div>
 
                 <!-- Button -->
-                @{
-                    if (Model.loggedUserEmail == null)
+                @if (Model.loggedUserEmail == null)
+                {
+                    <a asp-page="/AuthOption" asp-route-providerId="@Model.providerUser.Id" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary">
+                        Sign In to hire
+                    </a>
+                }
+                else
+                {
+                    if (Model._order == null)
                     {
-                        <a asp-page="/AuthOption" asp-route-providerId="@Model.providerUser.Id" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary">
-                            Sign In to hire
-                        </a>
-                        <a asp-page="/Index" asp-route-providerId="@Model.providerUser.Id" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary">
-                            Sign up to hire
-                        </a>
+                        <button type="button" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            HIRE
+                        </button>
+
                     }
                     else
                     {
-                        if (Model._order == null)
+                        if (Model._order.Status == "accepted")
                         {
-                            <button type="button" class="apply-now-button popup-with-zoom-anim margin-bottom-50 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                HIRE
-                            </button>
+                            <h4 class="text-success text-center">Task undertaking...</h4>
                         }
-                        else
+                        else if (Model._order.Status == "pending")
                         {
-                            if (Model._order.Status == "accepted")
-                            {
-                                <h4 class="text-success text-center">Task undertaking...</h4>
-                            }
-                            if (Model._order.Status == "pending")
-                            {
-                                <h4 class="text-primary text-center">Your request is being processed...</h4>
-                            }
+                            <h4 class="text-primary text-center">Your request is being processed...</h4>
                         }
-
                     }
+
                 }
 
                 @*<a href="#small-dialog" class="">Make an Offer <i class="icon-material-outline-arrow-right-alt"></i></a>*@
@@ -210,9 +206,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 @if (Model.loggedUserEmail == null)
                 {
-                    <form asp-route-providerId="@Model.providerUser.Id" asp-page-handler="hire" method="post">
-                        <button class="btn btn-primary">Confirm</button>
-                    </form>
+                    <p>hi</p>
                 }
                 else
                 {

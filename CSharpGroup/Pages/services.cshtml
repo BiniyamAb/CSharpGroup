@@ -28,28 +28,30 @@
     </div>
 </div>-->
 
+<form action="/" method="post">
+    <div class="container-fluid" id="con">
+        <div class="row" id="row-row">
+            <div class="col-md-12 col text-center">
 
-<div class="container-fluid" id="con">
-    <div class="row" id="row-row">
-        <div class="col-md-12 col text-center">
+                <!--Search bar-->
+                <div class="container h-100">
+                    <div class="d-flex justify-content-center h-100">
+                        <div class="row" id="row-search">
+                            <div class="col-md-10">
 
-            <!--Search bar-->
-            <div class="container h-100">
-                <div class="d-flex justify-content-center h-100">
-                    <div class="row" id="row-search">
-                        <div class="col-md-10">
-                            <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
+                                <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
-                        </div>
+                        <div id="categoryDropDown"></div>
                     </div>
-                    <div id="categoryDropDown"></div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <div class="container-fluid d-flex px-5 mx-5 py-3row">
     <h1 class="align-self-center text-center col-md-12 mt-4">Services We Have Got</h1>
@@ -60,10 +62,12 @@
         @foreach (var item in Model.categoryList)
         {
             <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
-                <img src="@item.Image" class="card-img-top" alt="..." style="height: 15rem">
-                <div class="card-body">
-                    <a asp-page="/EachService" asp-route-id="@item.Id"><p class="card-text text-center services-a-tag">@item.Name</p></a>
-                </div>
+                <a id="service-link" asp-page="/EachService" asp-route-id="@item.Id">
+                    <img id="hover-img" src="@item.Image" class="card-img-top" alt="..." style="height: 15rem">
+                    <div id="hover-text-cont" class="card-body">
+                        <h5 id="hover-text" class="card-text text-center">@item.Name</h5>
+                    </div>
+                </a>
             </div>
         }
     </div>

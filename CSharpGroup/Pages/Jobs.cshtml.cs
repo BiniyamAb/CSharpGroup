@@ -13,8 +13,9 @@ namespace CSharpGroup.Pages
 {
     public class JobsModel : PageModel
     {
-        private readonly CSharpGroupContext _mycontext;
-        public IList<Order> _orderList;
+        public readonly CSharpGroupContext _mycontext;
+        public IList<Order> _orderList = null;
+        public int loggedProviderId;
         public JobsModel(CSharpGroupContext context)
         {
             _mycontext = context;            
@@ -47,10 +48,29 @@ namespace CSharpGroup.Pages
                     .Where(p => p.Email == HttpContext.Session.GetString("email"))
                     .SingleOrDefaultAsync();
 
-            var loggedProviderId = providerUser.Id;
+            loggedProviderId = providerUser.Id;
             _orderList = await _mycontext.Orders
                 .Where(o => o.Status == "pending" &&
                        o.ProviderId == loggedProviderId).ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostAcceptAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).SingleOrDefaultAsync();
+            order.Status = "accepted";
+            order.OrderCreatedDate = DateTime.Now.ToString();
+            Random rnd = new Random();
+            int randomNum = rnd.Next(9999);
+            order.UniqueCode = randomNum;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostDeclineAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).SingleOrDefaultAsync();
+            order.Status = "declined";
+            return Page();
+        }
+
     }
 }

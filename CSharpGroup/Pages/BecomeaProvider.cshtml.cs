@@ -27,7 +27,7 @@ namespace CSharpGroup.Pages
         {
             categorylist = await _mycontext.Categories.ToListAsync();
         }
-        public IActionResult OnPost(User user, Provider provider)
+        public async Task<IActionResult> OnPostAsync(User user, Provider provider)
         {
             if (ModelState.IsValid)
             {
@@ -44,16 +44,16 @@ namespace CSharpGroup.Pages
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 user.Password = Hasher.HashPassword(user, user.Password);
                 user.Role = "providerRequesting";
-                var users = _mycontext.Users.Add(user);
-                _mycontext.SaveChanges();
+                var users = await _mycontext.Users.AddAsync(user);
+                await _mycontext.SaveChangesAsync();
 
                 provider.UserId = users.Entity.Id;
-                Console.WriteLine(provider.UserId);
-                _mycontext.Providers.Add(provider);
-                _mycontext.SaveChanges();
+                await _mycontext.Providers.AddAsync(provider);
+                await _mycontext.SaveChangesAsync();
 
 
                 HttpContext.Session.SetString("email", user.Email);
+                HttpContext.Session.SetString("role", user.Role);
 
                 return RedirectToPage("/Index");
             }

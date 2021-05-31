@@ -24,16 +24,15 @@ namespace CSharpGroup.Pages
         public void OnGet()
         {
         }
-        public IActionResult OnPost(User userdetails)
+        public async Task<IActionResult> OnPostAsync(User userdetails)
         {
-            _mycontext.Update(userdetails);
+            await _mycontext.UpdateAsync(userdetails);
             return Page();
-            
         }
-        public void Update(User user)
+        public async Task Update(User user)
         {
             //definition for Update
-            _mycontext.Users.Update(user);
+            await _mycontext.UpdateAsync(user);
         }
 
         //public async Task<IAsyncResult> UpdateAsync(string email, User userdetails)

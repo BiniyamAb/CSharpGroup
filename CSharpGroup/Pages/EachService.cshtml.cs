@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CSharpGroup.Data;
 using CSharpGroup.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace CSharpGroup.Pages
 {
@@ -16,10 +18,10 @@ namespace CSharpGroup.Pages
         {
             _mycontext = context;
         }
-        public void OnGet(int id)
+        public async Task OnGetAsync(int id)
         {
-            Service =  _mycontext.Categories.SingleOrDefault(e => e.Id == id);
-            TopProviders = _mycontext.Providers
+            Service =  await _mycontext.Categories.SingleOrDefaultAsync(e => e.Id == id);
+            TopProviders = await _mycontext.Providers
                     .Join(
                         _mycontext.Users,
                         provider => provider.UserId,
@@ -31,6 +33,7 @@ namespace CSharpGroup.Pages
                             FirstName = user.FirstName,
                             LastName = user.LastName,
                             Address = user.Address,
+                            Role = user.Role,
                             JobsDone = provider.JobsDone,
                             AverageRating = provider.AverageRating,
                             PerHourWage = provider.PerHourWage,
@@ -42,10 +45,10 @@ namespace CSharpGroup.Pages
                             Recommendation = provider.Recommendation
                         }
                     )
-                    .Where(p => p.Category == Service.Name)
+                    .Where(p => p.Category == Service.Name && p.Role == "provider")
                     .OrderByDescending(p => p.AverageRating)
-                    .Take(6)
-                    .ToList();
+                    .Take(3)
+                    .ToListAsync();
         }
     }
 }
