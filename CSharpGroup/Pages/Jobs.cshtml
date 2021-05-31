@@ -5,7 +5,8 @@
 
 
 <br>
-<br>
+
+
 <div class="container">
 
     @if (Model._orderList != null)
@@ -20,13 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{ 
-                    var acceptedOrder = Model._mycontext.Orders
-                                        .Where(o => o.Status == "accepted" && !o.IsCompleted &&
-                                                o.ProviderId == Model.loggedProviderId)
-                                        .SingleOrDefault();
-                }
-                @if (acceptedOrder != null)
+                @if (Model.acceptedOrder == null)
                 {
                     foreach (var item in Model._orderList)
                     {
@@ -35,11 +30,9 @@
                             <th scope="row">@user.FirstName @user.LastName</th>
                             <td>@user.Address</td>
                             <td>
-                                <form asp-route-orderId="@item.Id" asp-page-handler="accept" method="post">
-                                    <button class="btn btn-success">Accept</button>
-                                </form>
-                                <form asp-route-orderId="@item.Id" asp-page-handler="decline" method="post">
-                                    <button class="btn btn-danger">Decline</button>
+                                <form method="post">
+                                    <button asp-route-orderId="@item.Id" asp-page-handler="accept" class="btn btn-success">Accept</button>
+                                    <button asp-route-orderId="@item.Id" asp-page-handler="decline" class="btn btn-danger">Decline</button>
                                 </form>
                             </td>
                         </tr>
@@ -48,20 +41,62 @@
                 else
                 {
                     var ordersAwaiting = Model._orderList.Count();
-                    var userUndertaking = Model._mycontext.Users.Where(u => u.Id == acceptedOrder.SeekerId).SingleOrDefault();
-                        <tr>
-                            <th scope="row">@userUndertaking.FirstName @userUndertaking.LastName</th>
-                            <td>@userUndertaking.Address</td>
-                            <td>Undertaking...</td>
-                        </tr>
+                    var userUndertaking = Model._mycontext.Users.Where(u => u.Id == Model.acceptedOrder.SeekerId).FirstOrDefault();
+                    var userName = userUndertaking.FirstName + " " + userUndertaking.LastName;
+                    var phoneNo = userUndertaking.PhoneNo;
+                    var address = userUndertaking.Address;
+                    var uniqueCode = Model.acceptedOrder.UniqueCode.ToString();
+                    <tr>
+                        <th scope="row">@userUndertaking.FirstName @userUndertaking.LastName</th>
+                        <td>@userUndertaking.Address</td>
+                        <td>Undertaking... <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-name="@userName" data-userPhone="@phoneNo" data-userAddress="@address" data-uniqueCode="@uniqueCode">
+                                            View Details
+                                            </button></td>
+                    </tr>
+                    if (ordersAwaiting > 1)
+                    {
                         <tr>
                             <td colspan="3">
                                 You have @ordersAwaiting other requests waiting. Finish the task at hand to accept another one
                             </td>
                         </tr>
+                    }
+                    else if (ordersAwaiting > 0)
+                    {
+                        <tr>
+                            <td colspan="3">
+                                You have @ordersAwaiting other request waiting. Finish the task at hand to accept another one
+                            </td>
+                        </tr>
+                    }
+
                 }
             </tbody>
         </table>
+
+
+
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="name-class"></p>
+                        <p class="phone-class"></p>
+                        <p class="address-class"></p>
+                        <p class="code-class"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
     else
     {
@@ -73,3 +108,26 @@
 
 
 </div>
+
+
+
+@section Scripts{
+    <script>
+    $('#exampleModal2').on('show.bs.modal', function (event) {
+        var button2 = $(event.relatedTarget) // Button that triggered the modal
+        var userName = button2.data('name')
+        var phoneNo = button2.data('userPhone')
+        var address = button2.data('userAddress')
+        var code = button2.data('uniqueCode')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        //modal.find('.modal-title').text('New message to ' + providerName)
+        modal.find('.modal-body .name-class').text("Ordered by " + userName)
+        modal.find('.modal-body .phone-class').text("Phone: " + phoneNo)
+        modal.find('.modal-body .address-class').text("Address: " + address)
+        modal.find('.modal-body .code-class').text("Unique Code: " + code)
+    })
+    </script>
+
+}

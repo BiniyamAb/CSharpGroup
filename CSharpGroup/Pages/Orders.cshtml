@@ -2,39 +2,163 @@
 @model CSharpGroup.Pages.OrdersModel
 @{
 }
-<br><br>
-    <div class="container">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Provider</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">OrderCreated</th>
-                    <th scope="col">OrderCompleted</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Nate</th>
-                    <td>Active</td>
-                    <td>22-12-2010</td>
-                    <td>30-12-2010</td>
-                </tr>
-                <tr>
-                    <th scope="row">Silver</th>
-                    <td>Pending</td>
-                    <td>22-2-2010</td>
-                    <td>22-2-2010</td>
-                </tr>
-                <tr>
-                    <th scope="row">Shania</th>
-                    <td>Completed</td>
-                    <td>22-2-2010</td>
-                    <td>22-2-2010</td>
-                </tr>
-            </tbody>
-        </table>
+<br>
+<br>
 
+<br>
+<div class="container">
+    <ul class="nav nav-pills nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-history-tab" data-toggle="pill" href="#pills-history" role="tab" aria-controls="pills-history" aria-selected="false">History</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">...</div>
+        <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
+
+            <div class="container">
+
+                @if (Model.ordersList != null)
+                {
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Provider Name</th>
+                                <th scope="col">Service</th>
+                                <th scope="col">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                @foreach (var item in Model.ordersList)
+                                {
+                                    var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
+                                    <tr>
+                                        <th scope="row">@provider.FirstName @provider.LastName</th>
+                                        <td>@item.Category</td>
+                                        <td>
+                                            @if (item.Status == "pending")
+                                            {
+                                                <form method="post">
+                                                    <button asp-route-orderId="@item.Id" asp-page-handler="cancel" class="btn btn-danger">Cancel Order</button>
+                                                </form>
+                                            }
+                                            else if(item.Status == "declined")
+                                            {
+                                            <form method="post">
+                                                <button asp-route-orderId="@item.Id" asp-route-categoryName="@item.Category" asp-page-handler="someOneElse" class="btn btn-primary">Hire Someone Else</button>
+                                            </form>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                           
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <h1>You Have No Pending Orders Currently!</h1>
+                }
+
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
+            <div class="container">
+
+                @if (Model.ordersList != null)
+                {
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Provider Name</th>
+                                <th scope="col">Service</th>
+                                <th scope="col"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.ordersHistory)
+                            {
+                                var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
+                                var providerName = provider.FirstName + provider.LastName;
+                                var dateInfo = item.OrderCreatedDate + " - " + item.OrderCompletedDate;
+                                <tr>
+                                    <th scope="row">@provider.FirstName @provider.LastName</th>
+                                    <td>@item.Category</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-name="@providerName" data-dateInfo="@dateInfo">
+                                            View Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="name-class"></p>
+                                    <p class="date-class"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                }
+                else
+                {
+                    <h1>You Have No History!</h1>
+                }
+
+            </div>
+        </div>
     </div>
+</div>
+
+@section Scripts{ 
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var providerName = button.data('name')
+        var dateInfo = button.data('dateInfo')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        //modal.find('.modal-title').text('New message to ' + providerName)
+        modal.find('.modal-body .name-class').text("Provided by " + providerName)
+        modal.find('.modal-body .date-class').text("From " + dateInfo)
+    })
+</script>
+
+}
+
+
+
 
 
