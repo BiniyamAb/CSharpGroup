@@ -42,7 +42,7 @@ namespace CSharpGroup.Pages
                         user => user.Id,
                         (provider, user) => new ProviderUser
                         {
-                            Id = user.Id,
+                            Id = provider.UserId,
                             Category = provider.Category,
                             FirstName = user.FirstName,
                             LastName = user.LastName,
@@ -76,7 +76,7 @@ namespace CSharpGroup.Pages
                 loggedUser = await _mycontext.Users.SingleOrDefaultAsync(c => c.Email == loggedUserEmail);
                 _order = await _mycontext.Orders
                     .Where(o => o.SeekerId == loggedUser.Id)
-                    .Where(o => o.ProviderId == providerUser.Id)
+                    .Where(o => o.ProviderId == providerUser.ProviderId)
                     .Where(o => !o.IsCompleted)
                     .Where(o => o.Status != "declined")
                     .FirstOrDefaultAsync();
@@ -86,7 +86,7 @@ namespace CSharpGroup.Pages
           
         }
 
-        public async Task<IActionResult> OnPostHireAsync(int providerId, int loggedUserId)
+        public async Task<IActionResult> OnPostHireAsync(int providerId, int loggedUserId, int providerUserId)
         {
             Console.WriteLine("workin here...");
             var newOrder = new Order
@@ -103,7 +103,7 @@ namespace CSharpGroup.Pages
             await _mycontext.SaveChangesAsync();
 
 
-            return RedirectToPage("/Single_Provider", new { id = providerId });
+            return RedirectToPage("/Single_Provider", new { id = providerUserId });
 
         }
     }

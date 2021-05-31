@@ -210,7 +210,7 @@
                 }
                 else
                 {
-                    <form asp-route-providerId="@Model.providerUser.Id" asp-route-loggedUserId="@Model.loggedUser.Id" asp-page-handler="hire" method="post">
+                    <form asp-route-providerId="@Model.providerUser.ProviderId" asp-route-loggedUserId="@Model.loggedUser.Id" asp-route-providerUserId="@Model.providerUser.Id" asp-page-handler="hire" method="post">
                         <button class="btn btn-primary">Confirm</button>
                     </form> 
                 }

@@ -91,7 +91,7 @@ namespace CSharpGroup.Migrations
                         name: "FK_Orders_Providers_ProviderId",
                         column: x => x.ProviderId,
                         principalTable: "Providers",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Orders_Users_SeekerId",
