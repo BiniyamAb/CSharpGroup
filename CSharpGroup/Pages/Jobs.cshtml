@@ -19,7 +19,7 @@
         <div class="tab-pane fade show active" id="pills-jobs" role="tabpanel" aria-labelledby="pills-jobs-tab">
             <div class="container">
 
-                @if (Model._orderList != null)
+                @if (Model._orderList.Count != 0 || Model.acceptedOrder !=null)
                 {
                     <table class="table">
                         <thead class="thead-dark">
@@ -67,7 +67,7 @@
                                 if (ordersAwaiting > 1)
                                 {
                                     <tr>
-                                        <td colspan="3">
+                                        <td colspan="3" class="text-center">
                                             You have @ordersAwaiting other requests waiting. Finish the task at hand to accept another one
                                         </td>
                                     </tr>
@@ -75,7 +75,7 @@
                                 else if (ordersAwaiting > 0)
                                 {
                                     <tr>
-                                        <td colspan="3">
+                                        <td colspan="3" class="text-center">
                                             You have @ordersAwaiting other request waiting. Finish the task at hand to accept another one
                                         </td>
                                     </tr>
@@ -89,7 +89,7 @@
                 }
                 else
                 {
-                    <h1>You Have No Job Requests Currently!</h1>
+                    <h3 class="text-center">You Have No Job Requests Currently!</h3>
                 }
 
 
@@ -103,7 +103,59 @@
 
         <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
 
+            <div class="container">
 
+                @if (Model.jobsHistory.Count != 0)
+                {
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Provider Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Details</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.jobsHistory)
+                            {
+                                var user = Model._mycontext.Users.Where(u => u.Id == item.SeekerId).SingleOrDefault();
+                                var review = Model._mycontext.Reviews.Where(r => r.OrderId == item.Id).SingleOrDefault();
+                                var userName = user.FirstName + user.LastName;
+                                var dateInfo = item.OrderCreatedDate + " - " + item.OrderCompletedDate;
+
+
+                                <tr>
+                                    <th scope="row">@user.FirstName @user.LastName</th>
+                                    <td>@user.Address</td>
+                                    <td>
+                                        <p>From: @dateInfo</p>
+                                        <p>Phone No: @user.PhoneNo</p>
+                                        <p>Total Hours: @String.Format("{0:0.00}", item.SavedTime)</p>
+                                        <p>Total Price: $@String.Format("{0:0.00}", (item.SavedTime * (double)Model.loggedProviderPHW))</p>
+                                        <p>Rating:@review.Rating <i class="fa-fas-star"></i></p>
+                                        <p>Review: @review.Comment</p>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+                }
+                else
+                {
+                    <h3 class="text-center">You Have No History!</h3>
+                }
+
+            </div>
 
 
 
