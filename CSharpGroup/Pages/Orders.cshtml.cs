@@ -17,6 +17,10 @@ namespace CSharpGroup.Pages
         public IList<OrderProvider> ordersList;
         public IList<OrderProvider> ordersHistory;
         public IList<OrderProvider> ordersAccepted;
+        public ReviewOrder reviewOrder { get; set; }
+        //public int UniqueCode { get; set; }
+        //public string Review { get; set; }
+        //public int Rating { get; set; }
         public int loggedUserId; 
         public OrdersModel(CSharpGroupContext context)
         {
@@ -109,7 +113,7 @@ namespace CSharpGroup.Pages
                             UserId = provider.UserId
                         }
                     )
-                   .Where(o => o.Status == "accepted" && !o.IsCompleted &&
+                   .Where(o => (o.Status == "accepted" || o.Status == "acceptedstarted" || o.Status == "acceptedfailed" || o.Status == "acceptedReviewing") && !o.IsCompleted &&
                        (o.SeekerId == loggedUserId)).ToListAsync();
 
 
@@ -130,6 +134,73 @@ namespace CSharpGroup.Pages
             _mycontext.Remove(order);
             await _mycontext.SaveChangesAsync();
             return RedirectToPage("/Provider_list",  new { id = category.Id});
+        }
+        public async Task<IActionResult> OnPostStartTimeAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).FirstOrDefaultAsync();
+            order.StartTime = DateTime.UtcNow;
+            order.Status = "acceptedstarted";
+            _mycontext.Update(order);
+            await _mycontext.SaveChangesAsync();
+            return RedirectToPage("/Orders");
+        }
+        public async Task<IActionResult> OnPostCompleteAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).FirstOrDefaultAsync();
+            order.Status = "acceptedreviewing";
+            _mycontext.Update(order);
+            await _mycontext.SaveChangesAsync();
+            return RedirectToPage("/Orders");
+        }
+        public async Task<IActionResult> OnPostPauseTimeAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).FirstOrDefaultAsync();
+            var newDif = DateTime.UtcNow.Subtract(order.StartTime).TotalHours;
+            order.SavedTime += newDif;
+            order.Status = "accepted";
+            _mycontext.Update(order);
+            await _mycontext.SaveChangesAsync();
+            return RedirectToPage("/Orders");
+        }
+        public async Task<IActionResult> OnPostTryAgainAsync(int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).FirstOrDefaultAsync();
+            order.Status = "acceptedreviewing";
+            _mycontext.Update(order);
+            await _mycontext.SaveChangesAsync();
+            return RedirectToPage("/Orders");
+        }
+        public async Task<IActionResult> OnPostFinishAsync(ReviewOrder reviewOrder, int orderId)
+        {
+            var order = await _mycontext.Orders.Where(o => o.Id == orderId).FirstOrDefaultAsync();
+            if (order.UniqueCode == reviewOrder.UniqueCode)
+            {
+                var provider = await _mycontext.Providers.Where(p => p.Id == order.ProviderId).FirstOrDefaultAsync();
+                var jobsDone = provider.JobsDone;
+                var newJobsDone = jobsDone + 1;
+                var newAverage = (((double)jobsDone * provider.AverageRating) + (double)reviewOrder.Rating) / (double)newJobsDone;
+                order.Status = "accepted";
+                order.IsCompleted = true;
+                order.OrderCompletedDate = DateTime.Now.ToString();
+                provider.JobsDone = newJobsDone;
+                provider.AverageRating = newAverage;
+                var review = new Review
+                {
+                    Rating = reviewOrder.Rating,
+                    Comment = reviewOrder.Comment,
+                    OrderId = orderId
+                };
+                _mycontext.Update(provider);
+                await _mycontext.AddAsync(review);
+
+            }
+            else
+            {
+                order.Status = "acceptedfailed";
+            }
+            _mycontext.Update(order);
+            await _mycontext.SaveChangesAsync();
+            return RedirectToPage("/Orders");
         }
     }
 }

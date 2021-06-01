@@ -19,7 +19,90 @@
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">...</div>
+        <div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">
+            <div class="container">
+
+                @if (Model.ordersAccepted != null)
+                {
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Provider Name</th>
+                                <th scope="col">Details</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ordersAccepted)
+                            {
+                                var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
+                                <tr>
+                                    <th scope="row">@provider.FirstName @provider.LastName</th>
+                                    <td>
+                                        <p>Service: @item.Category</p>
+                                        <p>Phone number: @provider.PhoneNo</p>
+                                        <p>Price per hour: $@item.PerHourWage</p>
+                                        <p>Hours Worked: @String.Format("{0:0.00}", item.SavedTime)</p>
+                                        <p>Current Total: $@String.Format("{0:0.00}", (item.SavedTime * (double)item.PerHourWage))</p>
+                                    </td>
+                                    <td>
+
+                                        @if (item.Status == "accepted")
+                                        {
+                                            <form method="post">
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="startTime" class="btn btn-primary">Start Time</button>
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="complete" class="btn btn-success">Complete</button>
+                                            </form>
+                                        }
+                                        else if (item.Status == "acceptedstarted")
+                                        {
+                                            <form method="post">
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="pauseTime" class="btn btn-danger">Pause Time</button>
+                                            </form>
+                                        }
+                                        else if (item.Status == "acceptedfailed")
+                                        {
+                                            <form method="post">
+                                                <p>Unique code verification failed!</p>
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="tryAgain" class="btn btn-danger">Try Again</button>
+                                            </form>
+                                        }
+                                        else if (item.Status == "acceptedreviewing")
+                                        {
+
+                                            <form method="post">
+                                                <div class="form-group">
+                                                    <input asp-for="reviewOrder.UniqueCode" min="0" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Unique Code" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea asp-for="reviewOrder.Comment" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Review"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="formControlRange">Rate</label>
+                                                    <input asp-for="reviewOrder.Rating" type="range" class="custom-range" id="formControlRange" min="0" max="5" step="1" required> 
+                                                </div>
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="finish" type="submit" class="btn btn-primary">Finish</button>
+                                            </form>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                }
+                else
+                {
+                    <h1>You Have No Active Orders Currently!</h1>
+                }
+
+
+
+
+
+            </div>
+        </div>
         <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
 
             <div class="container">
@@ -37,29 +120,29 @@
                         </thead>
                         <tbody>
 
-                                @foreach (var item in Model.ordersList)
-                                {
-                                    var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
-                                    <tr>
-                                        <th scope="row">@provider.FirstName @provider.LastName</th>
-                                        <td>@item.Category</td>
-                                        <td>
-                                            @if (item.Status == "pending")
-                                            {
-                                                <form method="post">
-                                                    <button asp-route-orderId="@item.Id" asp-page-handler="cancel" class="btn btn-danger">Cancel Order</button>
-                                                </form>
-                                            }
-                                            else if(item.Status == "declined")
-                                            {
+                            @foreach (var item in Model.ordersList)
+                            {
+                                var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
+                                <tr>
+                                    <th scope="row">@provider.FirstName @provider.LastName</th>
+                                    <td>@item.Category</td>
+                                    <td>
+                                        @if (item.Status == "pending")
+                                        {
+                                            <form method="post">
+                                                <button asp-route-orderId="@item.Id" asp-page-handler="cancel" class="btn btn-danger">Cancel Order</button>
+                                            </form>
+                                        }
+                                        else if (item.Status == "declined")
+                                        {
                                             <form method="post">
                                                 <button asp-route-orderId="@item.Id" asp-route-categoryName="@item.Category" asp-page-handler="someOneElse" class="btn btn-primary">Hire Someone Else</button>
                                             </form>
-                                            }
-                                        </td>
-                                    </tr>
-                                }
-                           
+                                        }
+                                    </td>
+                                </tr>
+                            }
+
                         </tbody>
                     </table>
                 }
@@ -74,7 +157,7 @@
         <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
             <div class="container">
 
-                @if (Model.ordersList != null)
+                @if (Model.ordersHistory != null)
                 {
                     <table class="table">
                         <thead class="thead-dark">
@@ -92,13 +175,13 @@
                                 var provider = Model._mycontext.Users.Where(p => p.Id == item.UserId).SingleOrDefault();
                                 var providerName = provider.FirstName + provider.LastName;
                                 var dateInfo = item.OrderCreatedDate + " - " + item.OrderCompletedDate;
+
+                                
                                 <tr>
                                     <th scope="row">@provider.FirstName @provider.LastName</th>
                                     <td>@item.Category</td>
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-name="@providerName" data-dateInfo="@dateInfo">
-                                            View Details
-                                        </button>
+                                       
                                     </td>
                                 </tr>
                             }
@@ -108,28 +191,10 @@
 
 
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="name-class"></p>
-                                    <p class="date-class"></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     
+
+
+
                 }
                 else
                 {
@@ -141,22 +206,7 @@
     </div>
 </div>
 
-@section Scripts{ 
-<script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var providerName = button.data('name')
-        var dateInfo = button.data('dateInfo')
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        //modal.find('.modal-title').text('New message to ' + providerName)
-        modal.find('.modal-body .name-class').text("Provided by " + providerName)
-        modal.find('.modal-body .date-class').text("From " + dateInfo)
-    })
-</script>
 
-}
 
 
 

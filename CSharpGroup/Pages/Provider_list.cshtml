@@ -175,7 +175,7 @@
                             <span class="bookmark-icon"></span>
                             <ul>
                                 <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
-                                <li><i class="fa fas-star"></i> @item.AverageRating </li>
+                                <li><i class="fa fas-star"></i>@String.Format("{0:0.0}", item.AverageRating);</li>
                                 <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
                                 <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done</li>
                             </ul>

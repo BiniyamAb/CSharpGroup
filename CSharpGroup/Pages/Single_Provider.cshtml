@@ -22,7 +22,7 @@
                         <div class="header-details">
                             <h3>@Model.providerUser.FirstName @Model.providerUser.LastName</h3>
                             <ul>
-                                <li><div class="star-rating" data-rating="@Model.providerUser.AverageRating"></div></li>
+                                <li><div class="star-rating" data-rating="@String.Format("{0:0.0}", Model.providerUser.AverageRating);"></div></li>
                                 <li><img class="flag" src="images/flags/de.svg" alt="">@Model.providerUser.Address</li>
                                 <li><div class="verified-badge-with-title">Verified</div></li>
                             </ul>

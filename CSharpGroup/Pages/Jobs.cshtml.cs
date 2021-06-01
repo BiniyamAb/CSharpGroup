@@ -56,7 +56,7 @@ namespace CSharpGroup.Pages
                        o.ProviderId == loggedProviderId).ToListAsync();
 
             acceptedOrder = await _mycontext.Orders
-                                        .Where(o => o.Status == "accepted" && !o.IsCompleted &&
+                                        .Where(o => (o.Status == "accepted" || o.Status == "acceptedstarted" || o.Status == "acceptedfailed" || o.Status == "acceptedReviewing") && !o.IsCompleted &&
                                                 o.ProviderId == loggedProviderId)
                                         .FirstOrDefaultAsync();
         }
@@ -82,6 +82,7 @@ namespace CSharpGroup.Pages
             await _mycontext.SaveChangesAsync();
             return RedirectToPage("/Jobs");
         }
+
 
     }
 }
