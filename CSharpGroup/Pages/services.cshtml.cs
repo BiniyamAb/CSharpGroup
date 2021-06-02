@@ -14,6 +14,7 @@ namespace CSharpGroup.Pages
     {
         public IList<Category> categoryList;
         private readonly CSharpGroupContext _mycontext;
+        
         //public Category item;
         //private readonly CategoryService _myService;
 
@@ -21,9 +22,17 @@ namespace CSharpGroup.Pages
         {
             _mycontext = context;
         }
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchstring)
         {
-            categoryList = await _mycontext.Categories.ToListAsync();
+            var categories = from m in _mycontext.Categories select m;
+
+            if (!String.IsNullOrEmpty(searchstring))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchstring));
+               
+            }
+            categoryList = await categories.ToListAsync();
+
             ////List<Category> categoryList = _myService.Get();
             ////Category item = _myService.Get("60a8d386d2696aebf303dfd5");
 

@@ -7,12 +7,12 @@
 @section styles{
     <link rel="stylesheet" href="@Url.Content("~/css/style.css")"/>
 }
-<div class="back_img">
-    <div class="container mt-4">
+<div class="back_img" >
+    <div class="container-fluid mt-4 contback">
         <div class="row d-flex justify-content-center">
             <div class="col-md-9">
-                <div class="card p-4 mt-3">
-                    <h3 class="heading mt-5 text-center">How can we help You?</h3>
+                <div class="card p-4 mt-3 contback2">
+                    <h3 class="heading mt-5 text-center">How can we help you?</h3>
 
                     <div class="row mt-4 g-1 px-4 mb-5">
                         <div class="col-md-2">
@@ -54,22 +54,25 @@
                     </div>
                     <div class=" bg-gray-200">
 
-                        <!--Search bar-->
-                        <div class="container h-100">
-                            <div class="d-flex justify-content-center h-100">
-                                <div class="search row">
-                                    <div class="col-md-10">
+                        <div class="container conform">
+                            <div class="row text-center">
+                                <div class="col-md-12 text-center">
+                                    <form>
+                                        <div class="input-group">
+                                            <div class="form-outline">
+                                                <input name="searchString" type="text" id="form1" class="form-control" placeholder="Search services here..." />
 
-                                        <input class=" search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
+                                            </div>
+                                            <button type="submit" class="btn btnsearch" asp-page="/Index">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
 
-                                    </div>
+                                    </form>
                                 </div>
 
-                                <div id="categoryDropDown"></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -90,40 +93,71 @@
     <div class="container row mx-2">
         @foreach (var item in Model.categoryList)
         {
-            <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
+
+            <div class="card col-md-4 p-3 cardsss" >
                 <a id="service-link" asp-page="/EachService" asp-route-id="@item.Id">
                     <img id="hover-img" src="@item.Image" class="card-img-top" alt="..." style="height: 15rem">
-                    <div id="hover-text-cont" class="card-body">
-                        <h5 id="hover-text" class="card-text text-center">@item.Name</h5>
+                    <div class="card-body ">
+                        <h5 class="text-center">@item.Name</h5>
+                        <p class="text-center">Number of providers: @item.NumProviders</p>
                     </div>
-                </a>
+</a>
             </div>
         }
     </div>
 </div>
 
+<section class="taskers">
+    <div class='container mx-auto mt-5 col-md-10 mt-100 cardrow' >
+        <div class="header">
+            <div class="title" style="color:black; font-weight:bold;">Featured Providers</div>
+        </div>
+
+        <div class="row " style="justify-content: center; margin-top:50px;" id="featuredTaskers">
+            @foreach (var provider in Model.TopProviders)
+            {
+                <div class="card cardrow2" style="width: 18rem; height: 15rem; margin-top: 10px; margin-bottom: 30px; ">
+                <a asp-page="/Single_Provider" asp-route-id="@provider.Id" style="text-decoration:none; color:black;">
+                    <div class="card-content">
+                        <div class="card-body p-0">
+                            <div class="profile"> <img src="@provider.Image" alt="@provider.FirstName @provider.LastName "> </div>
+                            <div class="card-title" style="font-size:20px;"> @provider.FirstName @provider.LastName<br /> <small>$@provider.PerHourWage per hour</small> <br> <small>@provider.JobsDone jobs done</small></div>
+                            <div class="card-subtitle">
+                                <p> <small class="text-muted" > @for (var i = 0; i < provider.AverageRating; i++) {<i class="fas fa-star warning" style="color: #FDCC0D "></i> }</small> </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                </div>
+            }
+        </div>
 
 
-<div class="container my-3 d-flex align-items-center">
+    </div>
+</section>
+
+@*<div class="container my-3 d-flex align-items-center">
+    
     <div class="container row mx-2">
         @foreach (var provider in Model.TopProviders)
         {
+        <div class="card" style="width: 18rem;">
+            <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
+                <img src="@provider.Image" class="card-img-top" alt="@provider.FirstName @provider.LastName " style="height: 15rem">
+                <div class="card-body">
+                    <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
+                    <h6 class="text-center">$@provider.PerHourWage per hour</h6>
+                    <p class="text-center">@provider.JobsDone jobs done</p>
+                    <p class="text-center">@provider.AverageRating <i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
+                </div>
+            </a>
+        </div>
 
-            <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
-                <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
-                    <img src=".@provider.Image" class="card-img-top" alt="..." style="height: 15rem">
-                    <div class="card-body">
-                        <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
-                        <h6 class="text-center">$@provider.PerHourWage per hour</h6>
-                        <p class="text-center">@provider.JobsDone jobs done</p>
-                        <p class="text-center">@provider.AverageRating <i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
-                    </div>
-                </a>
-            </div>
+           
 
         }
     </div>
-</div>
+</div>*@
 
 <section class="section pb-0 z_three">
     <div class="container">

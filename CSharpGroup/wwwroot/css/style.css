@@ -594,3 +594,88 @@ input[type="button"].button.yellow:hover {
 #sidebarMenu {
   height: 400px;
 }
+
+#privacy{
+    padding:40px;
+}
+
+.service3:hover{
+    color:none;
+}
+
+.cardsss {
+    width: 20rem;
+    border: none;
+}
+
+.cardsss:hover{
+    border:solid 0.5px silver;
+}
+
+.contback{
+    background-image:url("../img/back4.jpg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    /*background-color:black;*/
+
+}
+
+@media screen and (max-wdith:500px){
+    .cardrow{
+        height:900px;
+    }
+    .cardrow2{
+        margin-top:30px;
+        
+    }
+}
+
+.conform {
+    padding-left: 120px;
+    margin-top: 0px;
+}
+
+#form1 {
+    width: 500px;
+    height: 45px;
+}
+
+.btnsearch {
+    background-color: silver;
+}
+
+@media screen and (max-width:600px) {
+    .conform {
+        padding-left: 50px;
+        margin-top: 0px;
+    }
+
+    #form1 {
+        width: 220px;
+        height: 45px;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:800px) {
+    .conform {
+        padding-left: 50px;
+        margin-top: 0px;
+    }
+
+    #form1 {
+        width: 310px;
+        height: 45px;
+    }
+}
+
+@media screen and (min-width:801px) and (max-width:1200px) {
+    .conform {
+        padding-left: 50px;
+        margin-top: 0px;
+    }
+
+    #form1 {
+        width: 310px;
+        height: 45px;
+    }
+}

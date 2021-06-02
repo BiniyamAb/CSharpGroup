@@ -9,132 +9,63 @@
     <link rel="stylesheet" href="@Url.Content("~/css/style2.css")">
 }
 
-<div class="container">
+<div class="container" style="margin-top:100px;">
     <div class="row">
-        <div class="col-xl-3 col-lg-4">
-            <div class="sidebar-container">
+        <div class="col-xl-3 col-lg-4" >
+            <div class="sidebar-container" >
 
                 <!-- Location -->
-                <div class="sidebar-widget">
-                    <h3>Location</h3>
-                    <div class="input-with-icon">
-                        <div id="autocomplete-container">
-                            <input id="autocomplete-input" type="text" placeholder="Location">
+                <h2>Search options</h2>
+                <form >
+                    <div class="sidebar-widget" style="margin-top:30px;">
+                        <h3>Location</h3>
+
+                        <div class="input-with-icon">
+                            <div id="autocomplete-container">
+                                <select name="address" id="cars" asp-items="Model.addresses" style="height:40px; width:170px; padding:0px;">
+                                    <option value="" > </option>
+                                   
+                                </select>
+                            </div>
+                            <i class="icon-material-outline-location-on"></i>
                         </div>
-                        <i class="icon-material-outline-location-on"></i>
+
+
                     </div>
-                </div>
 
-                <!-- Keywords -->
-                <div class="sidebar-widget">
-                    <h3>Keywords</h3>
-                    <div class="keywords-container">
-                        <div class="keyword-input-container">
-                            <input type="text" class="keyword-input" placeholder="e.g. job title" />
-                            <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
-                        </div>
-                        <div class="keywords-list"><!-- keywords go here --></div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
+                    <div class="sidebar-widget">
+                        <h3>Per-Hour Wage</h3>
+                        <div class="margin-top-5">
+                            <select name="perhour" id="cars" asp-items="Model.perhours" style="height: 30px; width: 70px; padding: 0px;">
+                                <option value=""> </option>
 
-                <!-- Category -->
-                <div class="sidebar-widget">
-                    <h3>Category</h3>
-                    <select class="selectpicker default" multiple data-selected-text-format="count" data-size="7" title="All Categories">
-                        <option>Admin Support</option>
-                        <option>Customer Service</option>
-                        <option>Data Analytics</option>
-                        <option>Design & Creative</option>
-                        <option>Legal</option>
-                        <option>Software Developing</option>
-                        <option>IT & Networking</option>
-                        <option>Writing</option>
-                        <option>Translation</option>
-                        <option>Sales & Marketing</option>
-                    </select>
-                </div>
-
-                <!-- Job Types -->
-                <div class="sidebar-widget">
-                    <h3>Job Type</h3>
-
-                    <div class="switches-list">
-                        <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Freelance</label>
-                        </div>
-
-                        <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Full Time</label>
-                        </div>
-
-                        <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Part Time</label>
-                        </div>
-
-                        <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Internship</label>
-                        </div>
-                        <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Temporary</label>
+                            </select>
                         </div>
                     </div>
 
-                </div>
+                   
+                    <!-- Keywords -->
+                    <div class="sidebar-widget">
+                        <h3>Keywords(first or last name)</h3>
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input name="searchString" type="text" id="form1" class="form-control" placeholder="Enter keyword here..." />
 
-                <!-- Salary -->
-                <div class="sidebar-widget">
-                    <h3>Salary</h3>
-                    <div class="margin-top-55"></div>
+                            </div>
 
-                    <!-- Range Slider -->
-                    <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" />
-                </div>
-
-                <!-- Tags -->
-                <div class="sidebar-widget">
-                    <h3>Tags</h3>
-
-                    <div class="tags-container">
-                        <div class="tag">
-                            <input type="checkbox" id="tag1" />
-                            <label for="tag1">front-end dev</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag2" />
-                            <label for="tag2">angular</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag3" />
-                            <label for="tag3">react</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag4" />
-                            <label for="tag4">vue js</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag5" />
-                            <label for="tag5">web apps</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag6" />
-                            <label for="tag6">design</label>
-                        </div>
-                        <div class="tag">
-                            <input type="checkbox" id="tag7" />
-                            <label for="tag7">wordpress</label>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
-
+                    <button type="submit" class="btn btnsearch" asp-page="/Provider_list">
+                        Search
+                    </button>
+                </form>
             </div>
         </div>
         <div class="col-xl-9 col-lg-8 content-left-offset">
 
-            <h3 class="page-title">Search Results</h3>
+            <h2 class="page-title">Choose the right person for you</h2>
 
-            <div class="notify-box margin-top-15">
+            @*<div class="notify-box margin-top-15">
                 <div class="switch-container">
                     <label class="switch"><input type="checkbox"><span class="switch-button"></span><span class="switch-text">Turn on email alerts for this search</span></label>
                 </div>
@@ -148,7 +79,7 @@
                         <option>Random</option>
                     </select>
                 </div>
-            </div>
+            </div>*@
 
             <div class="listings-container grid-layout margin-top-35">
                 @foreach (var item in Model.providersList)
@@ -166,18 +97,19 @@
 
                             
                             <div class="job-listing-description">
-                                <h4 class="job-listing-company">@item.FirstName @item.LastName  <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+                                <h4 class="job-listing-company">@item.FirstName @item.LastName  </h4>
                             </div>
                         </div>
 
                        
                         <div class="job-listing-footer">
                             <span class="bookmark-icon"></span>
-                            <ul>
+                            <ul style="font-size:15px;">
                                 <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
-                                <li><i class="fa fas-star"></i> @item.AverageRating </li>
+                                <li>@for (var i = 0; i < item.AverageRating; i++)
+                                {<i class="fas fa-star warning" style="color: #FDCC0D; font-size:12px;"></i> }</li>
                                 <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
-                                <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done</li>
+                                <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done <i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i></li>
                             </ul>
                         </div>
                     </a>
