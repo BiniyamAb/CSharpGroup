@@ -88,7 +88,6 @@ namespace CSharpGroup.Pages
 
         public async Task<IActionResult> OnPostHireAsync(int providerId, int loggedUserId, int providerUserId)
         {
-            Console.WriteLine("workin here...");
             var newOrder = new Order
             {
                 Status = "pending",
@@ -96,10 +95,7 @@ namespace CSharpGroup.Pages
                 ProviderId = providerId,
                 SeekerId = loggedUserId
             };
-            Console.WriteLine($"status: {newOrder.Status}\nProviderId: {newOrder.ProviderId}\n SeekerId: {newOrder.SeekerId}");
             await _mycontext.AddAsync(newOrder);
-
-            Console.WriteLine($"status: {newOrder.Status}\nProviderId: {newOrder.ProviderId}\n SeekerId: {newOrder.SeekerId}");
             await _mycontext.SaveChangesAsync();
 
 

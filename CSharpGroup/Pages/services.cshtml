@@ -4,54 +4,51 @@
     ViewData["Title"] = "services";
 }
 
-<!--<div class="container-fluid" id="con">
+<div class="container-fluid" id="con">
     <div class="row" id="row">
-        <div class="col-md-12 col text-center">-->
+        <div class="col-md-12 col text-center">
+            <div class="container conform">
+                <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                        <form>
+                            <div class="input-group" >
+                                <div class="form-outline">
+                                    <input name="searchString" type="text" id="form1" class="form-control" placeholder="Search services here..." />
 
-            <!--Search bar-->
-            <!--<div class="container h-100">
-                <div class="d-flex justify-content-center h-100">
-                    <div class="search" id="row">
-                        <div class="col-md-10">
-                            <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                    <div id="categoryDropDown"></div>
-                </div>
-            </div>-->
-            <!--search bar end-->
-
-        <!--</div>
-    </div>
-</div>-->
-
-<form action="/" method="post">
-    <div class="container-fluid" id="con">
-        <div class="row" id="row-row">
-            <div class="col-md-12 col text-center">
-
-                <!--Search bar-->
-                <div class="container h-100">
-                    <div class="d-flex justify-content-center h-100">
-                        <div class="row" id="row-search">
-                            <div class="col-md-10">
-
-                                <input class="search_input form-control" list="datalistOptions" type="text" name="" placeholder=" Search Services here..." id="searchBar">
+                                </div>
+                                <button type="submit" class="btn btnsearch" asp-page="/services">
+                                    <i class="fas fa-search"></i>
+                                </button>
                             </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-light" id="searchBtn"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                        <div id="categoryDropDown"></div>
+
+                        </form>
                     </div>
+
                 </div>
+
             </div>
+              
         </div>
     </div>
-</form>
+</div>
+
+<!--<form >-->
+    @*<p>
+        <input name="searchString" type="text" />
+        <input type="submit" value="Filter" asp-page="/services" />
+    </p>*@
+
+    <!--<div class="input-group">
+        <div class="form-outline">
+            <input name="searchString" type="text" id="form1" class="form-control" />
+           
+        </div>
+        <button type="submit" class="btn btn-primary" asp-page="/services">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+</form>-->
 
 <div class="container-fluid d-flex px-5 mx-5 py-3row">
     <h1 class="align-self-center text-center col-md-12 mt-4">Services We Have Got</h1>
