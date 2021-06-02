@@ -73,6 +73,7 @@ namespace CSharpGroup.Pages
                            Status = order.Status,
                            IsCompleted = order.IsCompleted,
                            OrderCreatedDate = order.OrderCreatedDate,
+                           OrderCompletedDate=order.OrderCompletedDate,
                            StartTime = order.StartTime,
                            SavedTime = order.SavedTime,
                            UniqueCode = order.UniqueCode,
