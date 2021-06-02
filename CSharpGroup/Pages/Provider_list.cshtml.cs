@@ -61,7 +61,6 @@ namespace CSharpGroup.Pages
                     .Where(p => p.Category.ToUpper() == category.Name.ToUpper() && p.Role == "provider")
                     .ToListAsync();
 
-
             //var category = new Category { Name = "Delivery", Image = "./img/delivery.jpg", NumProviders = 5, Description = "Delivey Category" };
             //await _mycontext.AddAsync(category);
             //await _mycontext.SaveChangesAsync();

@@ -110,7 +110,7 @@
         {
 
             <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
-                <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
+                <a asp-page="/Single_Provider" asp-route-id="@provider.Id" asp-route-pag="1">
                     <img src=".@provider.Image" class="card-img-top" alt="..." style="height: 15rem">
                     <div class="card-body">
                         <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>

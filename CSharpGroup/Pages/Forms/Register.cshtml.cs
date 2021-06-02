@@ -60,8 +60,7 @@ namespace CSharpGroup.Pages.Forms
                     return RedirectToPage("/Index");
                 }
 
-
-                return RedirectToPage("/Single_Provider", new { id = providerId });
+                return RedirectToPage("/Single_Provider", new { id = providerId, pag = 1 });
             }
             return Page();
 

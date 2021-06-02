@@ -155,7 +155,7 @@
                 {
                     var imageLink = "." + item.Image;
                 
-                    <a asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
+                    <a asp-page="/Single_provider" asp-route-id="@item.Id" asp-route-pag="1" class="job-listing">
 
                         
                         <div class="job-listing-details">
@@ -175,7 +175,7 @@
                             <span class="bookmark-icon"></span>
                             <ul>
                                 <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
-                                <li><i class="fa fas-star"></i>@String.Format("{0:0.0}", item.AverageRating);</li>
+                                <li><i class="fa fas-star"></i>@String.Format("{0:0.0}", item.AverageRating)</li>
                                 <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
                                 <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done</li>
                             </ul>
