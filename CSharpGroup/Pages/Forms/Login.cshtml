@@ -8,7 +8,7 @@
 
 
 <div>
-    @Html.ValidationMessage("Email")
+    <div><p style="color:red">@Html.ValidationMessage("Email")</p></div>
     <form method="post" asp-route-providerId="@Model.providerId">
         <div class="form-group">
             <label asp-for="user.Email"></label>
