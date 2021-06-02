@@ -10,22 +10,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CSharpGroup.Pages
 {
-    public class AdminCatModel : PageModel
+    public class AdminOrderModel : PageModel
     {
+        public IList<Provider> providerList;
+        public IList<User> userProviders;
+        public IList<Order> ordersList;
         public IList<Category> categoryList;
         private readonly CSharpGroupContext _mycontext;
-        public AdminCatModel(CSharpGroupContext context)
+        public AdminOrderModel(CSharpGroupContext context)
         {
             _mycontext = context;
         }
         public async Task OnGetAsync()
         {
+            providerList = await _mycontext.Providers.ToListAsync();
+            userProviders = await _mycontext.Users.ToListAsync();
             categoryList = await _mycontext.Categories.ToListAsync();
-            //foreach (var item in categoryList)
-            //{
-            //    Console.WriteLine($"name: {item.Name} \nimage: {item.Image} numberof providers: {item.NumProviders}  description: {item.Description}");
-                
-            //}
+            ordersList = await _mycontext.Orders.ToListAsync();
         }
     }
 }

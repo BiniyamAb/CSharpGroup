@@ -47,7 +47,7 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top" style="background-color: #301934 !important;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -58,15 +58,7 @@
                 </button>
                 <a class="navbar-brand" href="#">Project name</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-page="./AdminCat">Categories</a></li>
-                    <li><a asp-page="./AdminProvider">Providers</a></li>
-                    <li><a asp-page="./AdminRequests">Requesting Providers</a></li>
-                    <li><a asp-page="./Logout">Logout</a></li>
-                </ul>
-                
-            </div>
+           
         </div>
     </nav>
 
@@ -74,23 +66,27 @@
         <div class="row">
             <div class="sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a asp-page="./AdminCat">Categories <span class="sr-only">(current)</span></a></li>
+                    <li  s><a asp-page="./AdminDashboard">Dashboard <span class="sr-only"></span></a></li>
+
+                    <li class="active" tyle="background-color: #DF6589FF;"><a asp-page="./AdminCat">Categories <span class="sr-only"></span></a></li>
+
                     <li><a asp-page="./AdminProvider">Providers</a></li>
                     <li><a asp-page="./AdminRequests">Requesting Providers</a></li>
+                    <li><a asp-page="./AdminOrder">Orders</a></li>
+                   
                     <li><a asp-page="./Logout">Logout</a></li>
                 </ul>
                 
             </div>
-
-            <div class="col-sm-12 main">
+             
+            <div class="col-sm-12 main" style="margin-top:10%;margin-left:2%;">
                 <div class="row">
                     <div class="col-sm-12 main">
                         <div class="row row1">
-                            <h1 class="page-header">Category List</h1>
-                            <a asp-page="./AddCategory" class="btn btn-primary" style="margin-bottom:30px; font-size:20px">Add New Category</a>
+                            <h3 class="page-header">Category List</h3>
                             <!-- <h2 class="sub-header">Section title</h2> -->
                             <div class="table-responsive">
-                                
+
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
@@ -114,34 +110,37 @@
                                                 <img src="@Html.DisplayFor(modelItem => item.Image)" width="50px" height="50px" />
                                             </td>
                                             <td>@Html.DisplayFor(modelItem => item.NumProviders)</td>
-                                            <td> <a asp-page="./EditCategory" asp-route-id="@item.Id" style="text-decoration:none;">Edit</a> </td>
-                                            <td><a asp-page="./DeleteCategory" asp-route-id="@item.Id" style="text-decoration:none;"><i class="fas fa-trash-alt"></i></a></td>
+                                            <td> <a asp-page="./EditCategory" asp-route-id="@item.Id" style="text-decoration:none;"><i class="fas fa-edit" style="color: #ffc107;"></i></a> </td>
+                                            <td><a asp-page="./DeleteCategory" asp-route-id="@item.Id" style="text-decoration:none;"><i class="fas fa-trash-alt" style="color:#dc3545;"></i></a></td>
 
                                         </tr>
                                         }
                                         @*<tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                       
-                                        
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>*@
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Donna Snider</td>
+                            <td>Customer Support</td>
+                            <td>New York</td>
+                            <td>27</td>
+                            <td>2011/01/25</td>
+                            <td>$112,000</td>
+                        </tr>*@
                                     </tbody>
-                                    
+
                                 </table>
                             </div>
+
                         </div>
+                        <a asp-page="./AddCategory" class="btn" style="margin-top:20px; width:170px; height:40px; font-size:18px;background-color:#301934; color:#ffffff;">Add New Category</a>
+
                     </div>
                 </div>
             </div>

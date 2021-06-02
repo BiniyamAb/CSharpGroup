@@ -1,7 +1,7 @@
 ﻿@page
 @model CSharpGroup.Pages.BecomeaProviderModel
 @{
-    ViewData["Title"] = "Provider list";
+    ViewData["Title"] = "Become A Provider ";
 }
 @section styles{
     <link rel="stylesheet" href="@Url.Content("~/css/blue.css")">
@@ -50,7 +50,7 @@
                                             <div class="submit-field">
                                                 <label asp-for="user.FirstName">First Name</label>
                                                 <!--<h5 asp-for="User.">First Name</h5>-->
-                                                <input asp-for="user.FirstName" type="text" class="with-border" value=" " >
+                                                <input asp-for="user.FirstName" type="text" class="with-border" value=" " required>
                                             </div>
                                         </div>
 
@@ -58,7 +58,7 @@
                                             <div class="submit-field">
                                                 <label asp-for="user.LastName">Last Name</label>
                                                
-                                                <input asp-for="user.LastName" type="text" class="with-border" value=" " >
+                                                <input asp-for="user.LastName" type="text" class="with-border" value=" " required>
                                             </div>
                                         </div>
 
@@ -66,7 +66,7 @@
                                             <!-- Account Type -->
                                             <div class="submit-field">
                                                 <label asp-for="user.PhoneNo">Phone number</label>
-                                                <input asp-for="user.PhoneNo" type="text" class="with-border" value="" />
+                                                <input asp-for="user.PhoneNo" type="text" class="with-border" value="" required/>
                                             </div>
                                         </div>
 
@@ -74,7 +74,7 @@
                                             <div class="submit-field">
                                                 <label asp-for="user.Email">Email</label>
                                                
-                                                <input asp-for="user.Email" type="text" class="with-border" value="" />
+                                                <input asp-for="user.Email" type="text" class="with-border" value="" required/>
                                             </div>
                                         </div>
 
@@ -172,11 +172,11 @@
                                             <div class="col-xl-6">
                                                 <div class="submit-field">
                                                     <h5>Area avaliable</h5>
-                                                    <select asp-for="user.Address"  class="selectpicker with-border"  title="Select Job Type" data-live-search="true" required>
-                                                        <option selected>Addis Ababa</option>
-                                                        <option>Dire Dawa</option>
-                                                        <option>Bahir Dar</option>
-                                                        <option>Hawassa</option>
+                                                    <select asp-for="user.Address"  class=" form-control"  title="city residence" data-live-search="true" required>
+                                                        <option >Addis Ababa</option>
+                                                        <option >Dire Dawa</option>
+                                                        <option >Bahir Dar</option>
+                                                        <option >Hawassa</option>
 
                                                     </select>
                                                 </div>
@@ -185,7 +185,7 @@
                                             <div class="col-xl-6">
                                                 <div class="submit-field">
                                                     <h5>Choose a Category</h5>
-                                                    <select asp-for="provider.Category" class="selectpicker with-border" title="Select Job Type" data-live-search="true" required>
+                                                    <select asp-for="provider.Category" class=" form-control" title="search category" data-live-search="true" required>
 
                                                         @for (int i = 0; i < Model.categorylist.Count; i++)
                                                         {
@@ -225,7 +225,7 @@
                 <!-- Button -->
                 <div class="col-xl-12">
                     <p>Note: Your request will be processed once you save your changes. You will be listed as a provider once the verfication is done!</p>
-                    <button class="button ripple-effect big margin-top-30" type="submit">
+                    <button class="button ripple-effect big margin-top-30" type="submit" style="margin-top:20px; width:100px; height:40px; font-size:18px;background-color:#301934; color:#ffffff;">
                         Save Changes
                     </button>
 

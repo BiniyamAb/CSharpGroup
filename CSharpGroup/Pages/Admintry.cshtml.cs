@@ -10,11 +10,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CSharpGroup.Pages
 {
-    public class AdminCatModel : PageModel
+    public class AdmintryModel : PageModel
     {
         public IList<Category> categoryList;
         private readonly CSharpGroupContext _mycontext;
-        public AdminCatModel(CSharpGroupContext context)
+        public AdmintryModel(CSharpGroupContext context)
         {
             _mycontext = context;
         }
@@ -24,7 +24,7 @@ namespace CSharpGroup.Pages
             //foreach (var item in categoryList)
             //{
             //    Console.WriteLine($"name: {item.Name} \nimage: {item.Image} numberof providers: {item.NumProviders}  description: {item.Description}");
-                
+
             //}
         }
     }
