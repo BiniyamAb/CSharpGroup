@@ -10,63 +10,55 @@
 
 
 <div>
-    <form method="post" >
-        @Html.ValidationMessage("Email")
+
+
+    <form method="post" class="was-validated needs-validation" novalidate>
+        <div><p style="color: red">@Html.ValidationMessage("email")</p></div>
         <div class="form-group">
             <label asp-for="user.Email"></label>
-            <input asp-for="user.Email" class="form-control">
-            <span asp-validation-for="user.Email"></span>
+            <input asp-for="user.Email" class="form-control" type="email" required />
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>
         </div>
         <div class="form-group">
             <label asp-for="user.FirstName"></label>
-            <input asp-for="user.FirstName" class="form-control">
-            <span asp-validation-for="user.FirstName"></span>
+            <input asp-for="user.FirstName" class="form-control" type="text" required />
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>
         </div>
         <div class="form-group">
             <label asp-for="user.LastName"></label>
-            <input asp-for="user.LastName" class="form-control">
-            <span asp-validation-for="user.LastName"></span>
+            <input asp-for="user.LastName" class="form-control" type="text" required />
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Please fill out this field</div>
         </div>
-
         <div class="form-group">
             <label asp-for="user.Password"></label>
-            <input asp-for="user.Password" class="form-control">
-            <span asp-validation-for="user.Password"></span>
+            <input asp-for="user.Password" class="form-control" type="password" minlength="8" required />
+            <div class="valid-feedback">Valid</div>
+            <div class="invalid-feedback">Passwords must be atleast 8 characters long.</div>
         </div>
-        <div class="form-group">
-            <label asp-for="user.ConfirmPassword"></label>
-            <input asp-for="user.ConfirmPassword" class="form-control">
-            <span asp-validation-for="user.ConfirmPassword"></span>
-        </div>
+       
         <div class="form-group">
             <label asp-for="user.PhoneNo"></label>
-            <input asp-for="user.PhoneNo" class="form-control">
+            <input asp-for="user.PhoneNo" class="form-control" required />
             <span asp-validation-for="user.PhoneNo"></span>
         </div>
-
         <div class="form-group">
-            <label asp-for="user.Address"></label>
-            <select asp-for="user.Address" class="selectpicker with-border" title="Select Job Type" data-live-search="true" required>
+            <label asp-for="user.Address"></label><br />
+                <select asp-for="user.Address" class=" form-control" title="city residence" data-live-search="true" required>
+                    <option></option>
+                    <option>Addis Ababa</option>
+                    <option>Dire Dawa</option>
+                    <option>Bahir Dar</option>
+                    <option>Hawassa</option>
+                    <option>Gondar</option>
+                    <option>Adama</option>
 
-                <option value="Addis Ababa">Addis Ababa</option>
-                <option value="Bahir Dar">Bahir Dar</option>
-                <option value="Gondar">Gondar</option>
-                <option value="Hawassa">Hawassa</option>
-                <option value="Dire Dawa">Dire Dawa</option>
-                <option value="Adama">Adama</option>
-
-            </select>
-            
-            @*@{
-        string city = Request.Form["Address"];
-        <input asp-for="user.Address"/>
-
-        }*@
-
-
-            <span asp-validation-for="user.Address"></span>
+                </select>
+           
         </div>
-        <button type="submit" class="btn btn-block send-button button1">Sign Up</button>
+        <button type="submit" class="btn btn-block send-button button1 ">Sign Up</button>
     </form>
 
 

@@ -141,17 +141,18 @@
     <div class="container row mx-2">
         @foreach (var provider in Model.TopProviders)
         {
-        <div class="card" style="width: 18rem;">
-            <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
-                <img src="@provider.Image" class="card-img-top" alt="@provider.FirstName @provider.LastName " style="height: 15rem">
-                <div class="card-body">
-                    <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
-                    <h6 class="text-center">$@provider.PerHourWage per hour</h6>
-                    <p class="text-center">@provider.JobsDone jobs done</p>
-                    <p class="text-center">@provider.AverageRating <i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
-                </div>
-            </a>
-        </div>
+
+            <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
+                <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
+                    <img src=".@provider.Image" class="card-img-top" alt="..." style="height: 15rem">
+                    <div class="card-body">
+                        <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
+                        <h6 class="text-center">$@provider.PerHourWage per hour</h6>
+                        <p class="text-center">@provider.JobsDone jobs done</p>
+                        <p class="text-center">@String.Format("{0:0.0}", provider.AverageRating);<i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
+                    </div>
+                </a>
+            </div>
 
            
 

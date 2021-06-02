@@ -106,8 +106,7 @@
                             <span class="bookmark-icon"></span>
                             <ul style="font-size:15px;">
                                 <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
-                                <li>@for (var i = 0; i < item.AverageRating; i++)
-                                {<i class="fas fa-star warning" style="color: #FDCC0D; font-size:12px;"></i> }</li>
+                                <li><i class="fa fas-star"></i> @item.AverageRating </li>
                                 <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
                                 <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done <i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i></li>
                             </ul>
