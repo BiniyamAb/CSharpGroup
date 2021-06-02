@@ -15,8 +15,10 @@ namespace CSharpGroup.Pages
     {
         public readonly CSharpGroupContext _mycontext;
         public IList<Order> _orderList = null;
+        public IList<OrderProvider> jobsHistory = null;
         public Order acceptedOrder;
         public int loggedProviderId;
+        public int loggedProviderPHW;
         public JobsModel(CSharpGroupContext context)
         {
             _mycontext = context;            
@@ -51,6 +53,7 @@ namespace CSharpGroup.Pages
                     .SingleOrDefaultAsync();
 
             loggedProviderId = providerUser.ProviderId;
+            loggedProviderPHW =(int) providerUser.PerHourWage;
             _orderList = await _mycontext.Orders
                 .Where(o => o.Status == "pending" &&
                        o.ProviderId == loggedProviderId).ToListAsync();
@@ -59,6 +62,34 @@ namespace CSharpGroup.Pages
                                         .Where(o => (o.Status == "accepted" || o.Status == "acceptedstarted" || o.Status == "acceptedfailed" || o.Status == "acceptedReviewing") && !o.IsCompleted &&
                                                 o.ProviderId == loggedProviderId)
                                         .FirstOrDefaultAsync();
+            jobsHistory = await _mycontext.Orders
+                   .Join(
+                       _mycontext.Providers,
+                       order => order.ProviderId,
+                       provider => provider.Id,
+                       (order, provider) => new OrderProvider
+                       {
+                           Id = order.Id,
+                           Status = order.Status,
+                           IsCompleted = order.IsCompleted,
+                           OrderCreatedDate = order.OrderCreatedDate,
+                           OrderCompletedDate=order.OrderCompletedDate,
+                           StartTime = order.StartTime,
+                           SavedTime = order.SavedTime,
+                           UniqueCode = order.UniqueCode,
+                           ProviderId = provider.Id,
+                           SeekerId = order.SeekerId,
+                           Description = provider.Description,
+                           Category = provider.Category,
+                           JobsDone = provider.JobsDone,
+                           PerHourWage = provider.PerHourWage,
+                           Recommendation = provider.Recommendation,
+                           AverageRating = provider.AverageRating,
+                           UserId = provider.UserId
+                       }
+                   )
+                  .Where(o => o.IsCompleted &&
+                      (o.ProviderId == loggedProviderId)).ToListAsync();
         }
 
         public async Task<IActionResult> OnPostAcceptAsync(int orderId)

@@ -30,16 +30,16 @@ namespace CSharpGroup.Pages
 
             {
 
-                foreach (var uid in userProviders)
+                //foreach (var uid in userProviders)
 
-                {
-                    var userId = uid.Id;
-                    if (item.UserId == userId)
-                        Console.WriteLine($"name: {uid.FirstName}  + name: {uid.LastName}\n" +
-                            $"image: {uid.Image} numberof providers: {item.Description}  description: {item.Category} " +
-                            $"category: {item.JobsDone}");
+                //{
+                //    var userId = uid.Id;
+                //    if (item.UserId == userId)
+                //        Console.WriteLine($"name: {uid.FirstName}  + name: {uid.LastName}\n" +
+                //            $"image: {uid.Image} numberof providers: {item.Description}  description: {item.Category} " +
+                //            $"category: {item.JobsDone}");
 
-                }
+                //}
             }
 
 

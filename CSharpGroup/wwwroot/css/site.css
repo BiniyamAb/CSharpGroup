@@ -82,7 +82,7 @@ footer {
 
 #con {
     margin-top: 0%;
-    /* background-color: aqua; */
+     background-color: aqua; 
     background-image: url(../img/services.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -166,4 +166,55 @@ footer a:hover{
 #hover-text:hover{
     text-decoration:none;
     color:white;
+}
+
+.conform {
+    padding-left: 300px;
+    margin-top: 400px;
+}
+
+#form1{
+    width:500px;
+    height:45px;
+    
+}
+
+.btnsearch{
+    background-color:silver;
+}
+
+@media screen and (max-width:600px){
+    .conform {
+        padding-left: 55px;
+        margin-top: 400px;
+    }
+
+    #form1 {
+        width: 300px;
+        height: 45px;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:800px) {
+    .conform {
+        padding-left: 85px;
+        margin-top: 400px;
+    }
+
+    #form1 {
+        width: 350px;
+        height: 45px;
+    }
+}
+
+@media screen and (min-width:801px) and (max-width:1100px) {
+    .conform {
+        padding-left: 135px;
+        margin-top: 400px;
+    }
+
+    #form1 {
+        width: 350px;
+        height: 45px;
+    }
 }

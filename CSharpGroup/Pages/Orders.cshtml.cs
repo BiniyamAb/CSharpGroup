@@ -71,6 +71,7 @@ namespace CSharpGroup.Pages
                             Status = order.Status,
                             IsCompleted = order.IsCompleted,
                             OrderCreatedDate = order.OrderCreatedDate,
+                            OrderCompletedDate=order.OrderCreatedDate,
                             StartTime = order.StartTime,
                             SavedTime = order.SavedTime,
                             UniqueCode = order.UniqueCode,
@@ -190,6 +191,7 @@ namespace CSharpGroup.Pages
                     Comment = reviewOrder.Comment,
                     OrderId = orderId
                 };
+
                 _mycontext.Update(provider);
                 await _mycontext.AddAsync(review);
 
@@ -201,6 +203,7 @@ namespace CSharpGroup.Pages
             _mycontext.Update(order);
             await _mycontext.SaveChangesAsync();
             return RedirectToPage("/Orders");
+           
         }
     }
 }

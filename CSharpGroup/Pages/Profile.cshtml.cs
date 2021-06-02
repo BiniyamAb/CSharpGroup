@@ -8,46 +8,94 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace CSharpGroup.Pages
 {
     public class ProfileModel : PageModel
     {
+        [BindProperty]
+        public User user { get; set; }
         public User userdetails { get; set; }
         public IList<User> userList;
-        private readonly CSharpGroupContext _mycontext;
-  
+        public IList<Provider> providerList;
+       
+        public readonly CSharpGroupContext _mycontext;
+
         public ProfileModel(CSharpGroupContext context)
         {
             _mycontext = context;
         }
-        public void OnGet()
+        public async Task OnGetAsync(int id)
         {
+            providerList = await _mycontext.Providers.ToListAsync();
+            userList = await _mycontext.Users.ToListAsync();
+           
+            var em = HttpContext.Session.GetString("email");
+            user = _mycontext.Users.SingleOrDefault(a => a.Email.Equals(em));
+
         }
-        public async Task<IActionResult> OnPostAsync(User userdetails)
+       
+        public IActionResult OnPost()
         {
-            await _mycontext.UpdateAsync(userdetails);
+            var em = HttpContext.Session.GetString("email");
+            user.Id = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Email == em).Id;
+
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+
+                PasswordHasher<User> Hasher = new PasswordHasher<User>();
+                user.Password = Hasher.HashPassword(user, user.Password);
+
+            }
+            else
+            {
+                user.Password = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Password;
+            }
+            if (string.IsNullOrEmpty(user.FirstName))
+            {
+
+                user.FirstName = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).FirstName;
+            }
+
+            if (string.IsNullOrEmpty(user.Email))
+            {
+                user.Email = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Email;
+
+            }
+            if (string.IsNullOrEmpty(user.LastName))
+            {
+                user.LastName = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).LastName;
+
+            }
+            if (string.IsNullOrEmpty(user.PhoneNo))
+            {
+                user.PhoneNo = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).PhoneNo;
+
+            }
+            if (string.IsNullOrEmpty(user.Address))
+            {
+                user.Address = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Address;
+
+            }
+
+
+
+
+
+
+            _mycontext.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+            _mycontext.SaveChanges();
             return Page();
-        }
-        public async Task Update(User user)
-        {
-            //definition for Update
-            await _mycontext.UpdateAsync(user);
+
+
+
         }
 
-        //public async Task<IAsyncResult> UpdateAsync(string email, User userdetails)
-        //{
-        //    var existinguser = await _mycontext.FindAsync<string>(email);
 
-        //    if (existinguser == null)
-        //        return (IAsyncResult)Page();
 
-        //    existinguser.FirstName = userdetails.FirstName;
-
-        //    return (IAsyncResult)RedirectToPage("/Profile");
-            
-        //}
 
     }
-    
+
 }
