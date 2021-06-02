@@ -123,7 +123,7 @@ namespace CSharpGroup.Pages
             await _mycontext.SaveChangesAsync();
 
 
-            return RedirectToPage("/Single_Provider", new { id = providerUserId });
+            return RedirectToPage("/Single_Provider", new { id = providerUserId, pag = 1 });
 
         }
         
