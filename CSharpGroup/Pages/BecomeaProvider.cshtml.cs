@@ -41,6 +41,10 @@ namespace CSharpGroup.Pages
                 {
                     user.Image = "./img/default.jpg";
                 }
+                else
+                {
+                    user.Image = "./img/" + user.Image; 
+                }
               
                 
                 

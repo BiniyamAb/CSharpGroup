@@ -669,9 +669,9 @@ section {
 
 
 .contback3 {
-    background-image: url("../img/forabout2.jpg");
+    /*background-image: url("../img/forabout2.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
     height:400px;
-    color:white;
+    color: black;
 }

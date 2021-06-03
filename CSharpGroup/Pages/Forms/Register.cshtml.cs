@@ -41,6 +41,17 @@ namespace CSharpGroup.Pages.Forms
                     ModelState.AddModelError("email", "Email already exists. Please login");
                     return Page();
                 }
+
+                if (user.Image == null)
+                {
+                    user.Image = "./img/default.jpg";
+                }
+                else
+                {
+                    user.Image = "./img/" + user.Image;
+                }
+
+
                 PasswordHasher<User> Hasher = new PasswordHasher<User>();
                 user.Password = Hasher.HashPassword(user, user.Password);
                 user.Role = "user";

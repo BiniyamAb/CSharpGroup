@@ -41,7 +41,8 @@ namespace CSharpGroup.Pages
             {
                 return Page();
             }
-            
+            category.Image = "./img/" + category.Image;
+
             _mycontext.Attach(category).State = EntityState.Modified;
 
             try

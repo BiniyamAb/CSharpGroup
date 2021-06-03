@@ -116,7 +116,7 @@
 
 
 
-                <a id="page" asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
+                @*<a id="page" asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
                     <div class="list-wrapper">
                         <div class="list-item">
                             <div class="job-listing-details ">
@@ -146,36 +146,19 @@
                         </div>
 
                     </div>
-                </a>}
+                </a>*@
+                }
                 <!-- Job Listing -->
                 @* Job Listing end *@
             </div>
 
             <!-- Pagination -->
-            <div id="pagination-container"></div>
             <!-- Pagination / End -->
 
         </div>
     </div>
 
 </div>
-<script>
-    var items = $('.list-wrapper .list-item');
-    var numItems = items.length;
-    var perPage = 3;
-    items.slice(perPage).hide();
-    $('#pagination-container').pagination({
-        items: numItems,
-        itemsOnPage: perPage,
-        prevText: "<",
-        nextText: ">",
-        onPageClick: function (pageNumber) {
-            var showFrom = perPage * (pageNumber - 1);
-            var showTo = showFrom + perPage;
-            items.hide().slice(showFrom, showTo).show();
-        }
-    });
-</script>
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-migrate-3.0.0.min.js"></script>
