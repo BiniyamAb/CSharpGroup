@@ -14,7 +14,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" type="image/png" href="~/img/logo.JPG">
 
     <title>Dashboard Template for Bootstrap</title>
 
@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#"><h3 style="color:#fff; text-decoration:none;margin-left:5%;">DELALO</h3></a>
             </div>
 
         </div>
@@ -88,7 +88,7 @@
                             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@Model.userProviders.Count</h3>
                             <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                         </div>
-                        <p class="mb-0 mt-2 text-danger">0.12% <span class="text-black ml-1"><small>(30 days)</small></span></p>
+                        <p class="mb-0 mt-2 text-danger"></p>
                     </div>
                 </div>
             </div>
@@ -100,14 +100,14 @@
                             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@Model.providerList.Count</h3>
                             <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                         </div>
-                        <p class="mb-0 mt-2 text-danger">0.47% <span class="text-black ml-1"><small>(30 days)</small></span></p>
+                        <p class="mb-0 mt-2 text-danger"> </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 grid-margin ">
                 <div class="card" style="width: 22rem;">
                     <div class="card-body">
-                        <p class="card-title text-md-center text-xl-left">Loged in users</p>
+                        <p class="card-title text-md-center text-xl-left">Total Number of seekers </p>
                         <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
                             @{
                                 int sum = 0;
@@ -120,7 +120,7 @@
                             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@sum</h3>
                             <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                         </div>
-                        <p class="mb-0 mt-2 text-success">64.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
+                        <p class="mb-0 mt-2 text-success"></p>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">@Model.categoryList.Count</h3>
                             <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
                         </div>
-                        <p class="mb-0 mt-2 text-success">23.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
+                        <p class="mb-0 mt-2 text-success"></p>
                     </div>
                 </div>
             </div>
@@ -187,44 +187,40 @@
                                 <thead>
                                     <tr>
                                         <th>Category</th>
-                                        <th>Highest per hour wedge</th>
-                                        <th>lowest per hour wedge</th>
+                                        <th>Highest per hour wadge</th>
+                                        <th>lowest per hour wadge</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @{ var PerHourWage = Model._mycontext.Providers.Max(p => p.PerHourWage);
-                                       var minPerHourWage = Model._mycontext.Providers.Min(p => p.PerHourWage);
-                                       var mcategoty = Model._mycontext.Providers.Where(p => p.PerHourWage == PerHourWage).Select(p => p.Category).ToString();
-                                      }
-                                      
+                                    @{ var PerHourWage = Model._mycontext.Providers.Max(p => p.PerHourWage);
+                                        var minPerHourWage = Model._mycontext.Providers.Min(p => p.PerHourWage);
 
-                                    <tr>
-                                       
-                                        <td>
+                                        var mcategoty = Model._mycontext.Providers.Where(p => p.PerHourWage == PerHourWage).Select(p => p.Category).ToString();
+                                    }
 
-                                            <p class="mb-1 text-dark font-weight-medium"></p><small class="font-weight-medium"></small>
-                                        </td>
-                                        
+                                    @for (int i = 0; i < Model.values.Count; i++)
+                                    {
 
-                                        <td class="font-weight-medium">$ @PerHourWage</td>
-                                        <td class=" font-weight-medium">$ @minPerHourWage</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-1 text-dark font-weight-medium">TSLA</p><small class="font-weight-medium">Tesla, Inc.</small>
-                                        </td>
-                                        <td class="font-weight-medium">$@PerHourWage</td>
-                                        <td class="text-danger font-weight-medium">$@minPerHourWage</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="mb-1 text-dark font-weight-medium">GOOG</p><small class="font-weight-medium">Alphabet, Inc.</small>
-                                        </td>
-                                        <td class="font-weight-medium">$@PerHourWage</td>
-                                        <td class="text-danger font-weight-medium">$@minPerHourWage</td>
-                                    </tr>
-                                    
-                                    
+                                    }
+
+                                    @foreach (KeyValuePair<string, decimal[]> item in Model.values)
+                                    {
+                                        <tr>
+
+                                            <td>
+
+                                                <p class="mb-1 text-dark font-weight-medium">@item.Key</p><small class="font-weight-medium"></small>
+                                            </td>
+
+
+                                            <td class="font-weight-medium">$@item.Value[0]</td>
+                                            <td class=" font-weight-medium">$@item.Value[1] </td>
+                                        </tr>
+                                    }
+
+
+
+
                                 </tbody>
                             </table>
                         </div>

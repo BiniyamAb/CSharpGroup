@@ -8,29 +8,39 @@
     <link rel="stylesheet" href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@Url.Content("~/css/styleAuth.css")" asp-append-version="true" />
     <link rel="stylesheet" href="@Url.Content("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="@Url.Content("~/css/adminCat.css")" />
+
+    <link rel="stylesheet" href="@Url.Content("~/css/style3.css")" />
     @RenderSection("styles", false)
 
 </head>
 <body>
 
 
-    <div class="container-fluid bg-overlayspec py-5">
-        <div class="row py-5">
-            <div class="col-md-4 mx-auto py-5">
+    <div class="container" style="margin-top:7%;margin-left:15%;">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card" style="border-radius:5px; height:100%; padding-bottom:20px;">
+                    <div class="card-body" style="padding:4px 2px 2px 7px;">
+                        <div class="col-md-4">
+                            <a asp-page="/Index" asp-route-providerId="@Model.providerId">
+                            <img src="~/img/fullLogoC.JPG" style="width:300px; height:200px; margin-top:15%; padding:10%;"></a>
+                            
+                        </div>
+                        <div class="col-md-4" style="padding:2px 2px 2px 70px;">
 
-                <div class="jumbotron mx-auto">
-                    <div class="row text-center">
-                        <a asp-page="/Index">
-                            <img src="~/img/fullLogoC.JPG"  />
-                        </a>
+
+                            
+                            @RenderBody()
+                        </div>
+
                     </div>
-                    @RenderBody()
-
                 </div>
             </div>
         </div>
     </div>
-
 
 
 

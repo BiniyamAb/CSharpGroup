@@ -16,6 +16,7 @@ namespace CSharpGroup.Pages
     {
         [BindProperty]
         public User user { get; set; }
+        public Provider provider { get; set; }
         public User userdetails { get; set; }
         public IList<User> userList;
         public IList<Provider> providerList;
@@ -40,6 +41,7 @@ namespace CSharpGroup.Pages
         {
             var em = HttpContext.Session.GetString("email");
             user.Id = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Email == em).Id;
+            //user.Id = _mycontext.Providers.AsNoTracking().SingleOrDefault(a => a.UserId == em).Id;
 
             if (!string.IsNullOrEmpty(user.Password))
             {
@@ -78,6 +80,17 @@ namespace CSharpGroup.Pages
                 user.Address = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Address;
 
             }
+            if (string.IsNullOrEmpty(user.Role))
+            {
+                user.Role = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Role;
+
+            }
+            if (string.IsNullOrEmpty(user.Image))
+            {
+                user.Image = _mycontext.Users.AsNoTracking().SingleOrDefault(a => a.Id == user.Id).Image;
+
+            }
+           
 
 
 
@@ -85,9 +98,10 @@ namespace CSharpGroup.Pages
 
 
             _mycontext.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            HttpContext.Session.SetString("email", user.Email);
 
             _mycontext.SaveChanges();
-            return Page();
+            return RedirectToPage("/userProfile");
 
 
 
