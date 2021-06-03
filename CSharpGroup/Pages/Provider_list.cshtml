@@ -66,20 +66,20 @@
             <h2 class="page-title">Choose the right person for you</h2>
 
             @*<div class="notify-box margin-top-15">
-                <div class="switch-container">
-                    <label class="switch"><input type="checkbox"><span class="switch-button"></span><span class="switch-text">Turn on email alerts for this search</span></label>
-                </div>
+            <div class="switch-container">
+                <label class="switch"><input type="checkbox"><span class="switch-button"></span><span class="switch-text">Turn on email alerts for this search</span></label>
+            </div>
 
-                <div class="sort-by">
-                    <span>Sort by:</span>
-                    <select class="selectpicker hide-tick">
-                        <option>Relevance</option>
-                        <option>Newest</option>
-                        <option>Oldest</option>
-                        <option>Random</option>
-                    </select>
-                </div>
-            </div>*@
+            <div class="sort-by">
+                <span>Sort by:</span>
+                <select class="selectpicker hide-tick">
+                    <option>Relevance</option>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>Random</option>
+                </select>
+            </div>
+        </div>*@
 
             <div class="listings-container grid-layout margin-top-35">
                 @foreach (var item in Model.providersList)
@@ -88,18 +88,18 @@
                 
                     <a asp-page="/Single_provider" asp-route-id="@item.Id" asp-route-pag="1" class="job-listing">
 
-                        
-                        <div class="job-listing-details">
-                            
-                            <div class="job-listing-company-logo">
-                                <img src="@imageLink" alt="">
-                            </div>
 
-                            
-                            <div class="job-listing-description">
-                                <h4 class="job-listing-company">@item.FirstName @item.LastName  </h4>
-                            </div>
-                        </div>
+        <div class="job-listing-details">
+
+            <div class="job-listing-company-logo">
+                <img src="@imageLink" alt="">
+            </div>
+
+
+            <div class="job-listing-description">
+                <h4 class="job-listing-company">@item.FirstName @item.LastName  </h4>
+            </div>
+        </div>
 
                        
                         <div class="job-listing-footer">
@@ -113,36 +113,69 @@
                         </div>
                     </a>
 
-                }
+
+
+
+                <a id="page" asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
+                    <div class="list-wrapper">
+                        <div class="list-item">
+                            <div class="job-listing-details ">
+
+
+                                <div class="job-listing-company-logo">
+                                    <img src='@imageLink' alt="">
+                                </div>
+
+
+                                <div class="job-listing-description">
+                                    <h4 class="job-listing-company">@item.FirstName @item.LastName  <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+                                </div>
+                            </div>
+
+
+
+                            <div class="job-listing-footer">
+                                <span class="bookmark-icon"></span>
+                                <ul>
+                                    <li><i class="icon-material-outline-location-on"></i>@item.Address</li>
+                                    <li><i class="fa fas-star"></i> @item.AverageRating</li>
+                                    <li><i class="icon-material-outline-account-balance-wallet"></i> @item.PerHourWage</li>
+                                    <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </a>}
                 <!-- Job Listing -->
                 @* Job Listing end *@
             </div>
 
             <!-- Pagination -->
-            <div class="clearfix"></div>
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Pagination -->
-                    <div class="pagination-container margin-top-30 margin-bottom-60">
-                        <nav class="pagination">
-                            <ul>
-                                <li class="pagination-arrow"><a href="#"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#" class="current-page">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li class="pagination-arrow"><a href="#"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+            <div id="pagination-container"></div>
             <!-- Pagination / End -->
 
         </div>
     </div>
 
 </div>
+<script>
+    var items = $('.list-wrapper .list-item');
+    var numItems = items.length;
+    var perPage = 3;
+    items.slice(perPage).hide();
+    $('#pagination-container').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "<",
+        nextText: ">",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+        }
+    });
+</script>
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-migrate-3.0.0.min.js"></script>

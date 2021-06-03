@@ -101,11 +101,11 @@
                                     {
                                        
                                         <div class="col-auto">
-                                                <div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
-                                                    @if (item.Image != null)
-                                                    {
-                                                        <img src="./img/@Html.DisplayFor(modelItem => item.Image)" alt="">
-                                                    }
+                                                <div class="avatar-wrapper"  data-tippy-placement="bottom" title="Change Avatar">
+                                                  
+                                                    
+                                                     <img src="@Html.DisplayFor(modelItem => item.Image)" alt="">
+                                                   
 
 
                                                 </div>
@@ -136,7 +136,7 @@
                                                             <div class="account-type">
                                                                 <div>
                                                                     
-                                                                    <button class="btn" style="background-color: #301934; width:100px;">@Html.DisplayFor(modelItem => item.Role)</button>
+                                                                    <button class="btn" style="margin-top:30px; background-color:#301934; color:#ffffff;">@Html.DisplayFor(modelItem => item.Role)</button>
                                                                 </div>
 
 
@@ -183,9 +183,7 @@
                     <div class="dashboard-box">
 
                         <!-- Headline -->
-                        <div class="headline">
-                            <h3><i class="icon-material-outline-face"></i> Info</h3>
-                        </div>
+
                         @foreach (var item1 in Model.userProviders)
                         {
                             if (HttpContextAccessor.HttpContext.Session.GetString("email") == item1.Email.ToString())
@@ -195,6 +193,9 @@
                                     var userId = item1.Id;
                                     if (item.UserId == userId)
                                     {
+                                        <div class="headline">
+                                            <h3><i class="icon-material-outline-face"></i> Info</h3>
+                                        </div>
                                         <div class="content">
                                             <ul class="fields-ul">
                                                 <li>
@@ -222,7 +223,7 @@
                                                                 <!-- Attachments -->
                                                                 <div class="margin-top-0 margin-bottom-0">
                                                                     <div class="attachment-box ripple-effect">
-                                                                        
+
                                                                         <a href="@Html.DisplayFor(modelItem => item.Recommendation)">
                                                                             <span>Recommendation Letter</span>
                                                                             <i>PDF</i>
@@ -237,7 +238,7 @@
 
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </li>
                                                 <li>
@@ -304,7 +305,7 @@
                                 }
                             }
                         }
-                                    </div>
+                    </div>
                 </div>
 
                 <!-- Dashboard Box -->

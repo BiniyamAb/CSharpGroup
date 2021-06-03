@@ -18619,3 +18619,61 @@ a.headline-link {
 .btnsearch:hover{
     color:white;
 }
+#pagination-container ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    margin-left: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+#pagination-container li {
+    display: inline-block;
+    margin: 2px;
+}
+
+#pagination-container a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    /*line-height: 40px;*/
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    color: gray;
+    margin: 5px;
+    transition: all 1s ease;
+    border-radius: 4px;
+}
+
+#pagination-container span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    transition: all 1s ease;
+    border-radius: 4px;
+}
+
+#pagination-container li a:hover {
+    background: grey;
+    color: beige;
+}
+
+#pagination-container .current {
+    color: white;
+    background-color: grey;
+    cursor: pointer;
+}
+
+#pagination-container .prev.current,
+#pagination-container .next.current {
+    background: grey;
+    color: white;
+}

@@ -37,7 +37,10 @@ namespace CSharpGroup.Pages
                     return RedirectToPage("/Index");
                 }
 
-                
+                if (user.Image == null)
+                {
+                    user.Image = "./img/default.jpg";
+                }
               
                 
                 
