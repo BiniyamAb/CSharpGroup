@@ -47,7 +47,7 @@ namespace CSharpGroup.Pages
                     )
                     .Where(p => p.Category == Service.Name && p.Role == "provider")
                     .OrderByDescending(p => p.AverageRating)
-                    .Take(3)
+                    .Take(6)
                     .ToListAsync();
         }
     }

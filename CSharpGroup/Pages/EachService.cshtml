@@ -6,6 +6,7 @@
 
 @section styles{
     <link rel="stylesheet" href="@Url.Content("~/css/eachService.css")" asp-append-version="true">
+    <link rel="stylesheet" href="@Url.Content("~/css/style.css")" asp-append-version="true"/>
 }
 
 <div class="container-fluid cont" id="cont">
@@ -64,26 +65,63 @@
     <h3 class="align-self-center text-center col-md-12 mt-4">Check out some of the top providers in @Model.Service.Name services</h3>
 </div>
 
-<div class="container my-3 d-flex align-items-center">
+
+
+
+<section class="taskers">
+    <div class='container mx-auto mt-5 col-md-10 mt-100 cardrow'>
+        <div class="header">
+            <div class="title" style="color:black; font-weight:bold;">Featured Providers</div>
+        </div>
+
+        <div class="row " style="justify-content: center; margin-top:50px;" id="featuredTaskers">
+            @foreach (var provider in Model.TopProviders)
+            {
+                <div class="card cardrow2" style="width: 18rem; height: 15rem; margin-top: 10px; margin-bottom: 30px; ">
+                    <a asp-page="/Single_Provider" asp-route-id="@provider.Id" asp-route-pag="1" style="text-decoration:none; color:black;">
+                        <div class="card-content">
+                            <div class="card-body p-0">
+                                <div class="profile"> <img src=".@provider.Image" alt="@provider.FirstName @provider.LastName "> </div>
+                                <div class="card-title" style="font-size:20px;"> @provider.FirstName @provider.LastName<br /> <small>$@provider.PerHourWage per hour</small> <br> <small>@provider.JobsDone jobs done</small></div>
+                                <div class="card-subtitle">
+                                    <p> <small class="text-muted">@String.Format("{0:0.0}", provider.AverageRating) @for (var i = 0; i < provider.AverageRating; i++)
+                                    {<i class="fas fa-star warning" style="color: #FDCC0D "></i>}</small> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+
+    </div>
+</section>
+
+
+
+
+
+@*<div class="container my-3 d-flex align-items-center">
     <div class="container row mx-2">
         @foreach (var provider in Model.TopProviders)
         {
-            
-        <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
-            <a asp-page="/Single_Provider" asp-route-id="@provider.Id">
-                <img src=".@provider.Image" class="card-img-top" alt="..." style="height: 15rem">
-                <div class="card-body">
-                    <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
-                    <h6 class="text-center">$@provider.PerHourWage per hour</h6>
-                    <p class="text-center">@provider.JobsDone jobs done</p>
-                    <p class="text-center">@String.Format("{0:0.0}", provider.AverageRating);<i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
-                </div>
-            </a>
-        </div>
-            
+
+            <div class="card col-md-4 p-3" style="width: 20rem; border:none;">
+                <a asp-page="/Single_Provider" asp-route-id="@provider.Id" asp-route-pag="1">
+                    <img src=".@provider.Image" class="card-img-top" alt="..." style="height: 15rem">
+                    <div class="card-body">
+                        <h4 class="card-text text-center services-a-tag">@provider.FirstName @provider.LastName</h4>
+                        <h6 class="text-center">$@provider.PerHourWage per hour</h6>
+                        <p class="text-center">@provider.JobsDone jobs done</p>
+                        <p class="text-center">@String.Format("{0:0.0}", provider.AverageRating);<i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i><i class="fas fa-star warning"></i></p>
+                    </div>
+                </a>
+            </div>
+
         }
     </div>
-</div>
+</div>*@
 
 <div class="container cont5">
     <div class="row row5 d-flex">

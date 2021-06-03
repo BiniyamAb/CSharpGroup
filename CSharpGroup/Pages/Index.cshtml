@@ -5,10 +5,10 @@
 }
 
 @section styles{
-    <link rel="stylesheet" href="@Url.Content("~/css/style.css")"/>
+    <link rel="stylesheet" href="@Url.Content("~/css/style.css")" asp-append-version="true"/>
 }
-<div class="back_img" >
-    <div class="container-fluid mt-4 contback">
+<div class="back_img">
+    <div class="container-fluid contback">
         <div class="row d-flex justify-content-center">
             <div class="col-md-9">
                 <div class="card p-4 mt-3 contback2">
@@ -117,14 +117,15 @@
             @foreach (var provider in Model.TopProviders)
             {
                 <div class="card cardrow2" style="width: 18rem; height: 15rem; margin-top: 10px; margin-bottom: 30px; ">
-                <a asp-page="/Single_Provider" asp-route-id="@provider.Id" style="text-decoration:none; color:black;">
+                <a asp-page="/Single_Provider" asp-route-id="@provider.Id" asp-route-pag="1" style="text-decoration:none; color:black;">
                     <div class="card-content">
                         <div class="card-body p-0">
                             <div class="profile"> <img src="@provider.Image" alt="@provider.FirstName @provider.LastName "> </div>
                             <div class="card-title" style="font-size:20px;"> @provider.FirstName @provider.LastName<br /> <small>$@provider.PerHourWage per hour</small> <br> <small>@provider.JobsDone jobs done</small></div>
                             <div class="card-subtitle">
-                                <p> <small class="text-muted" > @for (var i = 0; i < provider.AverageRating; i++) {<i class="fas fa-star warning" style="color: #FDCC0D "></i> }</small> </p>
+                                <p> <small class="text-muted" >@String.Format("{0:0.0}", provider.AverageRating) @for (var i = 0; i < (int)provider.AverageRating; i++) {<i class="fas fa-star warning" style="color: #FDCC0D "></i> }</small> </p>
                             </div>
+                            <p class="text text-muted">Service: @provider.Category</p>
                         </div>
                     </div>
                 </a>

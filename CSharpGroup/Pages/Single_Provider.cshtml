@@ -5,14 +5,14 @@
 
 }
 @section styles{
-    <link rel="stylesheet" href="@Url.Content("~/css/blue.css")">
-    <link rel="stylesheet" href="@Url.Content("~/css/style2.css")">
+    <link rel="stylesheet" href="@Url.Content("~/css/blue.css")" asp-append-version="true">
+    <link rel="stylesheet" href="@Url.Content("~/css/style2.css")" asp-append-version="true">
 }
 
 
 <!-- Titlebar
 ================================================== -->
-<div class="single-page-header freelancer-header" data-background-image="images/single-freelancer.jpg">
+<div class="single-page-header freelancer-header mt-5" data-background-image="images/single-freelancer.jpg">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -23,7 +23,7 @@
                             <h3>@Model.providerUser.FirstName @Model.providerUser.LastName</h3>
                             <ul>
                                 <li><div class="star-rating" data-rating="@String.Format("{0:0.0}", Model.providerUser.AverageRating)"></div></li>
-                                <li><img class="flag" src="images/flags/de.svg" alt="">@Model.providerUser.Address</li>
+                                <li><i class="fas fa-map-marker-alt"></i>&nbsp;@Model.providerUser.Address</li>
                                 <li><div class="verified-badge-with-title">Verified</div></li>
                             </ul>
                         </div>

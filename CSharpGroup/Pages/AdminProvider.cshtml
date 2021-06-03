@@ -34,7 +34,6 @@
         .row1 {
             margin-left: 10px;
         }
-        }
     </style>
 
 
@@ -128,7 +127,7 @@
                                                             <span>@Html.DisplayFor(modelItem => uid.LastName)</span>
                                                         </td>
                                                         <td>
-                                                            <img @Html.DisplayFor(modelItem => uid.Image) width="50px" height="50px" />
+                                                            <img src="@Html.DisplayFor(modelItem => uid.Image)" width="50px" height="50px" />
                                                         </td>
                                                         <td>@Html.DisplayFor(modelItem => item.Category)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.Description)</td>

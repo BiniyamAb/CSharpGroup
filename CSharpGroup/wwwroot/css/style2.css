@@ -277,7 +277,7 @@ a, button {
     }
 
 img {
-    max-width: 100%;
+    max-width: 140%;
 }
 
 
@@ -6480,16 +6480,7 @@ span.bookmark-icon {
 }
 
 
-.bookmark-icon:before {
-    transition: transform 0.4s cubic-bezier(.8,-.41,.19,2.5);
-    font-family: "Material-Icons";
-    position: absolute;
-    right: 0;
-    left: 0;
-    text-align: center;
-    top: 6px;
-    content: "\e988";
-}
+    
 
 .bookmark-icon:hover {
     background-color: #333;
@@ -7418,25 +7409,9 @@ table.basic-table {
     padding: 0 8px 0 0;
     margin: 0;
     overflow: hidden;
-    padding-left: 34px;
+    padding-left: 5px;
     line-height: 27px;
 }
-
-    .verified-badge-with-title:before {
-        content: "\e92b";
-        font-family: "Feather-Icons";
-        font-size: 16px;
-        color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        line-height: 26px;
-        height: 26px;
-        width: 26px;
-        display: inline-block;
-        background-color: #38b653;
-    }
-
 
 /* ---------------------------------- */
 /* Star Rating
