@@ -83,9 +83,10 @@
 
             <div class="listings-container grid-layout margin-top-35">
                 @foreach (var item in Model.providersList)
-                {@*var imageLink = "." + item.Image;
-
-    <a asp-page="/Single_provider" asp-route-id="@item.Id" class="job-listing">
+                {
+                    var imageLink = "." + item.Image;
+                
+                    <a asp-page="/Single_provider" asp-route-id="@item.Id" asp-route-pag="1" class="job-listing">
 
 
         <div class="job-listing-details">
@@ -100,17 +101,17 @@
             </div>
         </div>
 
-
-        <div class="job-listing-footer">
-            <span class="bookmark-icon"></span>
-            <ul style="font-size:15px;">
-                <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
-                <li><i class="fa fas-star"></i> @item.AverageRating </li>
-                <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
-                <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done <i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i></li>
-            </ul>
-        </div>
-    </a>*@ var imageLink = "." + item.Image;
+                       
+                        <div class="job-listing-footer">
+                            <span class="bookmark-icon"></span>
+                            <ul style="font-size:15px;">
+                                <li><i class="icon-material-outline-location-on"></i> @item.Address</li>
+                                <li><i class="fa fas-star"></i>@String.Format("{0:0.0}", item.AverageRating)</li>
+                                <li><i class="icon-material-outline-account-balance-wallet"></i> $ @item.PerHourWage</li>
+                                <li><i class="icon-material-outline-access-time"></i> @item.JobsDone Jobs Done <i class="fa fa-check-circle" aria-hidden="true" style="color:green;"></i></li>
+                            </ul>
+                        </div>
+                    </a>
 
 
 

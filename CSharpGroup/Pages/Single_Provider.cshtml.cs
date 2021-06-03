@@ -14,11 +14,13 @@ namespace CSharpGroup.Pages
     public class Single_ProviderModel : PageModel
     {
         public ProviderUser providerUser;
-        private readonly CSharpGroupContext _mycontext;
+        public readonly CSharpGroupContext _mycontext;
         public Order _order;
         public string loggedUserEmail;
         public User loggedUser= null;
+        public int? pageActive { get; set; }
         public int idForProvider;
+        public IList<ReviewInfo> reviewsForThis;
         //public Category item;
         //private readonly CategoryService _myService;
 
@@ -27,10 +29,10 @@ namespace CSharpGroup.Pages
             _mycontext = context;
         }
 
-        public async Task OnGetAsync(int id)
+        public async Task OnGetAsync(int id, int pag)
         {
-            
-           
+            this.pageActive = pag;
+
             loggedUserEmail = HttpContext.Session.GetString("email");
             idForProvider = id;
             //string categoryName = _mycontext.Categories.SingleOrDefault(c => c.Id == id).Name;
@@ -68,7 +70,7 @@ namespace CSharpGroup.Pages
                     //    BookTitle = book.Title
                     //}
                     )
-                    .Where(p => p.Id == id)
+                    .Where(p => p.Id == idForProvider)
                     .SingleOrDefaultAsync();
             if (loggedUserEmail != null)
             {
@@ -81,9 +83,31 @@ namespace CSharpGroup.Pages
                     .Where(o => o.Status != "declined")
                     .FirstOrDefaultAsync();
             }
-            
 
-          
+            //var orderForThis = await _mycontext.Orders.Where(o => o.ProviderId == )
+            //reviewsForThis = await _mycontext.Reviews
+            //        .Where()
+            reviewsForThis = await _mycontext.Reviews
+                    .Join(
+                        _mycontext.Orders,
+                        review => review.OrderId,
+                        order => order.Id,
+                        (review, order) => new ReviewInfo
+                        {
+                            Rating = review.Rating,
+                            Comment = review.Comment,
+                            SeekerId = order.SeekerId,
+                            OrderCompletedDate = order.OrderCompletedDate,
+                            OrderCreatedDate = order.OrderCreatedDate,
+                            ProviderId = order.ProviderId
+                        }
+                    )
+                    .Where(r => r.ProviderId == providerUser.ProviderId)
+                    .ToListAsync();
+
+
+
+
         }
 
         public async Task<IActionResult> OnPostHireAsync(int providerId, int loggedUserId, int providerUserId)
@@ -99,8 +123,13 @@ namespace CSharpGroup.Pages
             await _mycontext.SaveChangesAsync();
 
 
-            return RedirectToPage("/Single_Provider", new { id = providerUserId });
+            return RedirectToPage("/Single_Provider", new { id = providerUserId, pag = 1 });
 
+        }
+        
+        public IActionResult OnPostToPage(int pageActive, int providerId)
+        {
+            return RedirectToPage("/Single_provider", new { id = providerId, pag = pageActive });
         }
     }
 }

@@ -167,7 +167,6 @@ namespace CSharpGroup.Pages
 
 
 
-
             //var category = new Category { Name = "Delivery", Image = "./img/delivery.jpg", NumProviders = 5, Description = "Delivey Category" };
             //await _mycontext.AddAsync(category);
             //await _mycontext.SaveChangesAsync();
