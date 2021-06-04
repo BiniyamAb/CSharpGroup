@@ -120,8 +120,8 @@
 
                                     @foreach (var item in Model.jobsHistory)
                                     {
-                                        var user = Model._mycontext.Users.Where(u => u.Id == item.SeekerId).SingleOrDefault();
-                                        var review = Model._mycontext.Reviews.Where(r => r.OrderId == item.Id).SingleOrDefault();
+                                        var user = Model._mycontext.Users.Where(u => u.Id == item.SeekerId).FirstOrDefault();
+                                        var review = Model._mycontext.Reviews.Where(r => r.OrderId == item.Id).FirstOrDefault();
                                         var userName = user.FirstName + user.LastName;
                                         var dateInfo = item.OrderCreatedDate + " - " + item.OrderCompletedDate;
 
@@ -133,7 +133,18 @@
                                                 <p>From: @dateInfo</p>
                                                 <p>Phone No: @user.PhoneNo</p>
                                                 <p>Total Hours: @String.Format("{0:0.00}", item.SavedTime) &nbsp; &nbsp; Total Price: $@String.Format("{0:0.00}", (item.SavedTime * (double)Model.loggedProviderPHW))</p>
-                                                <p>Rating: @review.Rating <i class="fa-fas-star"></i> &nbsp; &nbsp; Review: @review.Comment</p>
+                                                @if (review != null)
+                                                {
+                                                    <p>Rating: @review.Rating <i class="fa-fas-star"></i></p>
+                                                    @if (review.Comment == null)
+                                                    {
+                                                        continue;
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>Review: @review.Comment</p>
+                                                    }
+                                                }
                                             </td>
                                         </tr>
                                     }
